@@ -3,23 +3,35 @@ require 'super_docopt'
 module Rigit::Commands
   module Build
     def build
-      source = args['RIG']
-      name   = args['NAME']
-      config = config_for source
-
-      prompt = Prompt.new config.params, intro: config.intro
-      arguments = prompt.get_input params
-
-      arguments[:name] = params[:name] || args['NAME']
-
-      rigger = Rigger.new source, name, arguments
-      rigger.scaffold
+      Builder.new(args).execute
     end
 
     class Builder
+      attr_reader :args
 
-      def initizlize
-        # ...
+      def initialize(args)
+        @args = args
+      end
+
+      def execute
+        arguments = prompt.get_input params
+        arguments[:name] = params[:name] || name
+        rigger = Rigit::Rigger.new source, name, arguments
+        rigger.scaffold
+      end
+
+      private
+
+      def config
+        @config ||= config_for source
+      end
+
+      def name
+        args['NAME']
+      end
+
+      def source
+        args['RIG']
       end
 
       def params
@@ -37,11 +49,11 @@ module Rigit::Commands
       end
 
       def prompt
-        @prompt ||= Prompt.new
+        @prompt ||= Rigit::Prompt.new config.params, intro: config.intro
       end
 
       def config_for(source)
-        Config.load("#{source}/config.yml")
+        Rigit::Config.load("#{source}/config.yml")
       end
     end
   end
