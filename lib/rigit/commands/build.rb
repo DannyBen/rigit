@@ -14,9 +14,9 @@ module Rigit::Commands
       end
 
       def execute
+        abort "Directory is not empty." unless Dir.empty?(Dir.pwd)
         arguments = prompt.get_input params
-        arguments[:name] = params[:name] || name
-        rigger = Rigit::Rigger.new source, name, arguments
+        rigger = Rigit::Rigger.new source, arguments
         rigger.scaffold
       end
 
@@ -24,10 +24,6 @@ module Rigit::Commands
 
       def config
         @config ||= config_for source
-      end
-
-      def name
-        args['NAME']
       end
 
       def source

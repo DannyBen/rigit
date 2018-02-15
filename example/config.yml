@@ -1,6 +1,11 @@
 intro: A sample generator
 
 params:
+  name:
+    prompt: Name your project
+    type: text
+    default: project
+
   spec: 
     prompt: Include RSpec files?
     type: yesno

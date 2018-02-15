@@ -1,4 +1,11 @@
 Rigit
 
 Usage:
-  rig build RIG NAME [PARAMS...]
+  rig build RIG [PARAMS...]
+
+Parameters:
+  RIG
+    The name of the source folder (installed rig).
+
+Examples:
+  rig build gem name=mygem
