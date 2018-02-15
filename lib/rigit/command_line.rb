@@ -6,9 +6,12 @@ module Rigit
     docopt File.expand_path 'docopt', __dir__
     subcommands [:build]
 
+    attr_reader :config
+
     def build
       source = args['RIG']
       name   = args['NAME']
+      @config = config_for source
       rigger = Rigger.new source, name, arguments
       rigger.scaffold
     end
@@ -18,8 +21,7 @@ module Rigit
     def arguments
       result = {}
       config.params.each do |key, spec|
-        default_value = spec.is_a?(Array) ? spec.first : spec
-        result[key.to_sym] = params[key] || default_value
+        result[key.to_sym] = params[key] || spec.default
       end
       result[:name] = params[:name] || args['NAME']
       result
@@ -39,8 +41,8 @@ module Rigit
       output
     end
 
-    def config
-      @config ||= Config.load('example/source/config.yml')
+    def config_for(source)
+      Config.load("#{source}/config.yml")
     end
   end
 end

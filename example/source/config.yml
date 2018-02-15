@@ -4,7 +4,7 @@ params:
   spec: 
     prompt: Include RSpec files?
     type: yesno
-    default: yes
+    default: y
 
   console:
     prompt: Select console

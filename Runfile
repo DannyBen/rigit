@@ -1,4 +1,5 @@
 require "runfile-tasks"
+require "byebug"
 require_relative 'lib/rigit'
 
 title   "Rigit Developer Toolbelt"
@@ -17,4 +18,11 @@ end
 help   "Run interactive console"
 action :console, :c do
   run "bundle exec bin/console"
+end
+
+action :debug do
+  Dir.chdir 'example' do
+    run 'rm -rf target'
+    Rigit::CommandLine.execute %w[build source target]
+  end
 end
