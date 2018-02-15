@@ -1,9 +1,10 @@
 module Rigit
   class Rigger
-    attr_reader :rig, :arguments
+    attr_reader :rig, :arguments, :target_dir
 
-    def initialize(rig, arguments={})
-      @rig = rig      
+    def initialize(rig, arguments={}, target_dir='.')
+      @rig = rig
+      @target_dir = target_dir
       @arguments = arguments
     end
 
@@ -28,7 +29,7 @@ module Rigit
       files = Dir["#{dir}/**/*"].reject { |file| File.directory? file }
       
       files.each do |file|
-        target_file = (file % arguments).sub dir, '.'
+        target_file = (file % arguments).sub dir, target_dir
         content = File.read(file) % arguments
         File.deep_write target_file, content
       end

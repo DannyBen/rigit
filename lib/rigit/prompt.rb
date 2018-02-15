@@ -2,15 +2,13 @@ require 'tty-prompt'
 
 module Rigit
   class Prompt
-    attr_reader :params, :intro
+    attr_reader :params
 
-    def initialize(params, intro: nil)
-      @params, @intro = params, intro
+    def initialize(params)
+      @params = params
     end
 
     def get_input(prefill={})
-      puts "#{intro}\n\n" if intro
-
       result = {}
       params.each do |key, spec|
         result[key] = prefill.has_key?(key) ? prefill[key] : ask(spec)

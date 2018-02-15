@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
 require 'rigit'
 
-Rigit::CommandLine.execute ARGV
+begin
+  Rigit::CommandLine.execute ARGV
+rescue Rigit::Exit => e
+  puts e.message
+  exit 1
+rescue TTY::Reader::InputInterrupt
+  puts "\nGoodbye"
+  exit 1
+end
