@@ -30,7 +30,7 @@ module Rigit
       when 'select'
         prompt.select text, param.list, marker: '>'
       else
-        raise "Unknown type #{param[:type]}"
+        raise ConfigError, "Unknown type '#{param[:type]}'"
       end
     end
 

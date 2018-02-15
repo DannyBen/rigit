@@ -6,6 +6,9 @@ begin
 rescue Rigit::Exit => e
   puts e.message
   exit 1
+rescue Rigit::ConfigError => e
+  puts "#{e.class} - #{e.message}"
+  exit 1
 rescue TTY::Reader::InputInterrupt
   puts "\nGoodbye"
   exit 1

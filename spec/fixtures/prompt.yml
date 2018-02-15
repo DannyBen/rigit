@@ -1,0 +1,14 @@
+name:
+  prompt: "Name your project:"
+  type: text
+  default: project
+
+spec: 
+  prompt: Include RSpec files?
+  type: yesno
+  default: y
+
+console:
+  prompt: "Select console:"
+  type: select
+  list: [irb, pry]
