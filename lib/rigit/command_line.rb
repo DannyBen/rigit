@@ -1,4 +1,5 @@
 require 'super_docopt'
+require 'rigit/version'
 
 module Rigit
   class CommandLine < SuperDocopt::Base
