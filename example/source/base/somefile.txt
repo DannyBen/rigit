@@ -1,0 +1,5 @@
+This should be replaced
+--> %{name} <--
+
+more than once
+--> %{name} <--

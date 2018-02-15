@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'rigit'
+
+Rigit::CommandLine.execute ARGV

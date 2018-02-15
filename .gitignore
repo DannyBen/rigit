@@ -1,0 +1,10 @@
+/cache
+/coverage
+/dev
+/doc
+/gems
+/Gemfile.lock
+/.yardoc
+*.gem
+
+/example/target
