@@ -2,7 +2,7 @@ intro: A sample generator
 
 params:
   name:
-    prompt: Name your project
+    prompt: "Name your project:"
     type: text
     default: project
 
@@ -12,11 +12,11 @@ params:
     default: y
 
   console:
-    prompt: Select console
+    prompt: "Select console:"
     type: select
     list: [irb, pry]
 
   license: 
-    prompt: Name of license file
+    prompt: "Name of license file:"
     type: text
     default: MIT

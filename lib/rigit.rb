@@ -6,3 +6,5 @@ require 'rigit/command_line'
 require 'rigit/config'
 require 'rigit/prompt'
 require 'rigit/rigger'
+
+ENV['RIG_HOME'] ||= File.expand_path('.rig', Dir.home)

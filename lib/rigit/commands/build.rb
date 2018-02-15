@@ -49,7 +49,7 @@ module Rigit::Commands
       end
 
       def config_for(source)
-        Rigit::Config.load("#{source}/config.yml")
+        Rigit::Config.load("#{ENV['RIG_HOME']}/#{source}/config.yml")
       end
     end
   end
