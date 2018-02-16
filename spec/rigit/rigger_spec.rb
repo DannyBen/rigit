@@ -12,7 +12,7 @@ describe Rigger do
       it 'copies all files and folders' do
         Dir.chdir workdir do
           subject.scaffold
-          expect(`find .`).to match_fixture 'ls/minimal'
+          expect(Dir['**/*'].to_s).to match_fixture 'ls/minimal'
         end
       end
     end
@@ -21,10 +21,10 @@ describe Rigger do
       let(:arguments) {{ name: 'myapp', license: 'MIT', spec: 'y', console: 'irb' }}
       subject { described_class.new 'full', arguments }
 
-      it 'copies all files and folders' do
+      it 'copies all files and folders', :focus do
         Dir.chdir workdir do
           subject.scaffold
-          expect(`find .`).to match_fixture 'ls/full'
+          expect(Dir['**/*'].to_s).to match_fixture 'ls/full'
         end
       end
 

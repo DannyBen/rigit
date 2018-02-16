@@ -1,4 +1,1 @@
-.
-./some-file.txt
-./subfolder
-./subfolder/some-other-file.txt
+["some-file.txt", "subfolder", "subfolder/some-other-file.txt"]
