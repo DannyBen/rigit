@@ -1,3 +1,5 @@
+# subfolder/%{name}-deep-file.txt
+
 This should be replaced
 --> %{name} <--
 

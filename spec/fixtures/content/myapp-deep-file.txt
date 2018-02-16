@@ -1,0 +1,7 @@
+# subfolder/myapp-deep-file.txt
+
+This should be replaced
+--> myapp <--
+
+more than once
+--> myapp <--

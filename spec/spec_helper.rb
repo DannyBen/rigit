@@ -18,11 +18,18 @@ module RSpecMixin
       $stdin = STDIN
     end
   end
+
+  def reset_workdir
+    system 'rm -rf spec/tmp' if Dir.exist? 'spec/tmp'
+    Dir.mkdir 'spec/tmp'
+  end
 end
 
 RSpec.configure do |c|
   c.include RSpecMixin
 end
+
+ENV['RIG_HOME'] = "#{Dir.pwd}/examples"
 
 include Rigit
 

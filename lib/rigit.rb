@@ -8,4 +8,4 @@ require 'rigit/errors'
 require 'rigit/prompt'
 require 'rigit/rigger'
 
-ENV['RIG_HOME'] ||= File.expand_path('.rig', Dir.home)
+ENV['RIG_HOME'] ||= File.expand_path('.rigs', Dir.home)

@@ -1,0 +1,10 @@
+.
+./bin
+./bin/irb.console
+./MIT.license
+./myapp-runner.txt
+./somefile.txt
+./spec
+./spec/some-spec-file.txt
+./subfolder
+./subfolder/myapp-deep-file.txt

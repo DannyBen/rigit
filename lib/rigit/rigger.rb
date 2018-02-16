@@ -27,7 +27,7 @@ module Rigit
 
     def scaffold_dir(dir)
       files = Dir["#{dir}/**/*"].reject { |file| File.directory? file }
-      
+
       files.each do |file|
         target_file = (file % arguments).sub dir, target_dir
         content = File.read(file) % arguments

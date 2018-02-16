@@ -13,7 +13,7 @@ describe Prompt do
       end
     end
 
-    context "with invalid type", :focus do
+    context "with invalid type" do
       let(:params) { Config.load('spec/fixtures/prompt-invalid.yml').params }
 
       it "raises ConfigError" do
