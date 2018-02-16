@@ -42,7 +42,7 @@ Usage:
   rig build RIG [PARAMS...]
   rig install RIG REPO
   rig update RIG
-  rig (-v|--version|--help)
+  rig (-h|--help|--version)
 ```
 
 
