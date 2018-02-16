@@ -8,7 +8,7 @@ Rigit
 
 ---
 
-Soon
+![Rigit](rigit-header.png)
 
 ---
 
