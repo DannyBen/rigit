@@ -64,7 +64,7 @@ module Rigit::Commands
       end
 
       def verify_source_dir
-        raise Rigit::Exit, "No such rig: #{source}" unless rig.exist?
+        raise Rigit::Exit, "No such rig: #{rig_name}" unless rig.exist?
       end
 
       def verify_target_dir
