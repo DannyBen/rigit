@@ -1,10 +1,6 @@
 require 'spec_helper'
 
-
 describe File do
-  # This test will not produce coverage on extensions/file_extension.rb
-  # due to the fact that the same method exists in the rspec_fixtures
-  # gem
   describe '::deep_write', :focus do
     let(:dir) { 'spec/tmp/deep/folder' }
     let(:file) { "#{dir}/file.txt" }

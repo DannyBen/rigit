@@ -5,7 +5,6 @@ describe Rigger do
   describe '#scaffold' do
     let(:workdir) { 'spec/tmp' }
     before { reset_workdir }
-    let(:ls) { Dir['**/*'].sort.to_s }
 
     context 'with minimal example and no config' do
       subject { described_class.new 'minimal'}

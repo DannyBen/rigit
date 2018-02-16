@@ -19,7 +19,7 @@ module Rigit
 
     def settings!
       settings = Configatron::RootStore.new
-      settings.configure_from_hash YAML.load_file(path)
+      settings.configure_from_hash YAML.load_file(path) if File.exist? path
       settings
     end
   end

@@ -12,12 +12,12 @@ module Rigit::Commands
       def initialize(args)
         @args = args
         @source = args['RIG']
-        @arget_dir = '.'
+        @target_dir = '.'
         @source_dir = "#{ENV['RIG_HOME']}/#{source}"
       end
 
       def execute
-        puts "#{config.intro}\n\n" if config.intro
+        puts "#{config.intro}\n\n" if config.has_key? :intro
         verify_dirs
         arguments = prompt.get_input params
         rigger = Rigit::Rigger.new source, arguments

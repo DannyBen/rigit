@@ -19,6 +19,10 @@ module RSpecMixin
     end
   end
 
+  def ls
+    Dir['**/*'].sort.to_s
+  end
+
   def reset_workdir
     system 'rm -rf spec/tmp' if Dir.exist? 'spec/tmp'
     Dir.mkdir 'spec/tmp'
