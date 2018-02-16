@@ -4,6 +4,7 @@ require 'rigit/config'
 require 'rigit/errors'
 require 'rigit/prompt'
 require 'rigit/rig'
+require 'rigit/git'
 
 require 'rigit/commands/build'
 require 'rigit/commands/install'

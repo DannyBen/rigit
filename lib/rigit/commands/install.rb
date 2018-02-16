@@ -28,22 +28,13 @@ module Rigit::Commands
       def install
         say "Installing !txtgrn!#{repo}\n"
         FileUtils.mkdir_p target_path unless Dir.exist? target_path
-        success = pull_repo
+        success = Git.clone repo, target_path
 
         if success
           say "\nRig installed !txtgrn!successfully!txtrst! in !txtgrn!#{target_path}"
           say "To build a new project with this rig, run this in any empty directory:\n"
           say "  !txtpur!rig build #{rig_name}\n"
         end
-      end
-
-      def pull_repo
-        system "git clone #{repo} #{target_path}"
-        $?.exitstatus == 0
-      end
-
-      def tty_prompt
-        @tty_prompt ||= TTY::Prompt.new
       end
 
       def rig

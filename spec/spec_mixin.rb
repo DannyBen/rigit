@@ -30,7 +30,7 @@ module SpecMixin
     with_env var, nil, &block
   end
 
-  def with_env(var, value)
+  def with_env(var, value='yes')
     oritinal_value = ENV[var]
     ENV[var] = value
     yield

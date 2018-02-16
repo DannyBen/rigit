@@ -25,8 +25,9 @@ describe CommandLine do
     before { system 'rm -rf examples/pulled' if Dir.exist? 'examples/pulled' }
 
     it 'works' do
-      expect_any_instance_of(Commands::Install::Installer).to receive(:system)
-      expect{ described_class.execute argv }.to output(/Installing.*some\/repo.*successfully/m).to_stdout
+      with_env 'SIMULATE_GIT' do
+        expect{ described_class.execute argv }.to output(/Installing.*some\/repo.*git clone.*successfully/m).to_stdout
+      end
     end
   end
 end
