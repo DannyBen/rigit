@@ -21,12 +21,12 @@ describe CommandLine do
   end
 
   describe 'install' do
-    let(:argv) { %w[install pulled https://github.com/DannyBen/example-rig.git] }
+    let(:argv) { %w[install pulled https://github.com/some/repo.git] }
     before { system 'rm -rf examples/pulled' if Dir.exist? 'examples/pulled' }
 
     it 'works' do
       expect_any_instance_of(Commands::Install::Installer).to receive(:system)
-      expect{ described_class.execute argv }.to output(/Installing.*DannyBen\/example-rig.*successfully/m).to_stdout
+      expect{ described_class.execute argv }.to output(/Installing.*some\/repo.*successfully/m).to_stdout
     end
   end
 end

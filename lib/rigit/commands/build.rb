@@ -19,7 +19,7 @@ module Rigit::Commands
 
       def execute
         say "Building !txtgrn!#{rig_name}"
-        say "!txtblu!#{config.intro}\n\n" if config.has_key? :intro
+        say "!txtblu!#{config.intro}" if config.has_key? :intro
         verify_dirs
         arguments = prompt.get_input params
         rig.scaffold arguments:arguments, target_dir: target_dir

@@ -47,7 +47,7 @@ describe Rig do
       let(:arguments) {{ name: 'myapp', license: 'MIT', spec: 'y', console: 'irb' }}
       subject { described_class.new 'full' }
 
-      it 'copies all files and folders', :focus do
+      it 'copies all files and folders' do
         Dir.chdir workdir do
           subject.scaffold arguments: arguments
           expect(ls).to match_fixture 'ls/full'
