@@ -30,4 +30,15 @@ describe CommandLine do
       end
     end
   end
+
+  describe 'update' do
+    let(:argv) { %w[update pulled] }
+    before { FileUtils.mkdir 'examples/pulled' unless Dir.exist? 'examples/pulled' }
+
+    it 'works' do
+      with_env 'SIMULATE_GIT' do
+        expect{ described_class.execute argv }.to output_fixture('cli/update')
+      end
+    end
+  end
 end

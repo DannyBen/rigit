@@ -26,15 +26,20 @@ module Rigit::Commands
       private
 
       def install
-        say "Installing !txtgrn!#{repo}\n"
+        say "Installing !txtgrn!#{repo}"
         FileUtils.mkdir_p target_path unless Dir.exist? target_path
-        success = Git.clone repo, target_path
+        success = Rigit::Git.clone repo, target_path
 
         if success
-          say "\nRig installed !txtgrn!successfully!txtrst! in !txtgrn!#{target_path}"
+          say "Rig installed !txtgrn!successfully!txtrst! in !txtgrn!#{target_path}"
           say "To build a new project with this rig, run this in any empty directory:\n"
           say "  !txtpur!rig build #{rig_name}\n"
+        else
+          # :nocov:
+          say "!txtred!Installation failed"
+          # :nocov:
         end
+
       end
 
       def rig
@@ -46,8 +51,8 @@ module Rigit::Commands
       end
 
       def verify_dirs
-        if Dir.exist? target_path
-          say "Rig !txtgrn!#{rig_name}!txtrst! is already installed."
+        if rig.exist?
+          say "Rig !txtgrn!#{rig_name}!txtrst! is already installed"
           say "In order to update it from the source repository, run:\n"
           say "  !txtpur!rig update #{rig_name}\n"
           raise Rigit::Exit

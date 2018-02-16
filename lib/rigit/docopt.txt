@@ -3,6 +3,7 @@ Rigit
 Usage:
   rig build RIG [PARAMS...]
   rig install RIG REPO
+  rig update RIG
 
 Commands:
   build
@@ -11,6 +12,12 @@ Commands:
     In case the rig has arguments, you will be prompted to input them.
     If you wish to execute this command without interactivity, you may
     use specify all parameters in the PARAMS parameter (see below).
+
+  install
+    Clone a remote rig git repository and install it locally.
+
+  update
+    Update an installed rig to its latest version.
 
 Parameters:
   RIG
@@ -24,6 +31,11 @@ Parameters:
     Specify any of the rig's parameters in the format 'param=value'.
     For boolean parameters, use 'param=y' or 'param=n'.
 
+Environment Variables:
+  RIG_HOME
+    The path where your local rigs are installed (default: ~/.rigs)
+
 Examples:
   rig build gem name=mygem spec=y
   rig install example https://github.com/DannyBen/example-rig.git
+

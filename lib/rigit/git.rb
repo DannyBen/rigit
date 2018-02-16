@@ -4,6 +4,12 @@ module Rigit
       execute %Q[git clone #{repo} "#{target_path}"]
     end
 
+    def self.pull(target_path)
+      Dir.chdir target_path do
+        execute %Q[git pull]
+      end
+    end
+
     private
 
     def self.execute(command)

@@ -8,6 +8,7 @@ require 'rigit/git'
 
 require 'rigit/commands/build'
 require 'rigit/commands/install'
+require 'rigit/commands/update'
 require 'rigit/command_line'
 
 module Rigit
