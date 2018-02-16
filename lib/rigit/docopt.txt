@@ -4,6 +4,14 @@ Usage:
   rig build RIG [PARAMS...]
   rig install RIG REPO
 
+Commands:
+  build
+    Create a new project based on one of the installed rig templates.
+    This command should be executed in an empty directory.
+    In case the rig has arguments, you will be prompted to input them.
+    If you wish to execute this command without interactivity, you may
+    use specify all parameters in the PARAMS parameter (see below).
+
 Parameters:
   RIG
     The name of the source folder (installed rig).
@@ -12,6 +20,10 @@ Parameters:
     A git repository containing rig configuration. 
     Use the 'clone URL' for the repository.
 
+  PARAMS
+    Specify any of the rig's parameters in the format 'param=value'.
+    For boolean parameters, use 'param=y' or 'param=n'.
+
 Examples:
-  rig build gem name=mygem
+  rig build gem name=mygem spec=y
   rig install example https://github.com/DannyBen/example-rig.git
