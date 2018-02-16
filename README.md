@@ -18,9 +18,10 @@ Table of Contents
 * [Installation](#installation)
 * [Quick Start](#quick-start)
 * [Installing Rigs](#installing-rigs)
-   * [From remote git repositories](#from-remote-git-repositories)
-   * [From local files](#from-local-files)
-* [Building Rigs](#building-rigs)
+* [Using Rigs (Scaffolding)](#using-rigs-scaffolding)
+* [Creating Rigs](#creating-rigs)
+   * [Directory Structure](#directory-structure)
+   * [Config File](#config-file)
 
 
 Installation
@@ -34,10 +35,15 @@ Quick Start
 Installing Rigs
 --------------------------------------------------
 
-### From remote git repositories
 
-### From local files
-
-
-Building Rigs
+Using Rigs (Scaffolding)
 --------------------------------------------------
+
+
+Creating Rigs
+--------------------------------------------------
+
+### Directory Structure
+
+### Config File
+
