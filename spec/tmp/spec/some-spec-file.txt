@@ -1,3 +1,0 @@
-# spec/some-spec-file.txt
-
-also replace me here --> myapp <--

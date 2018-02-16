@@ -1,3 +1,0 @@
-# myapp-runner.txt
-
-hello myapp
