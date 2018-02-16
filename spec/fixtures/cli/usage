@@ -1,0 +1,3 @@
+Usage:
+  rig build RIG [PARAMS...]
+  rig install RIG REPO

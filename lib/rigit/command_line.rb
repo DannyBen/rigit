@@ -5,8 +5,9 @@ module Rigit
   class CommandLine < SuperDocopt::Base
     version VERSION
     docopt File.expand_path 'docopt.txt', __dir__
-    subcommands [:build]
+    subcommands [:build, :install]
 
     include Commands::Build
+    include Commands::Install
   end
 end
