@@ -6,7 +6,8 @@ include Colsole
 begin
   Rigit::CommandLine.execute ARGV
 rescue Rigit::Exit => e
-  say e.message
+  message = e.message
+  say message unless message == 'Rigit::Exit'
   exit 1
 rescue Rigit::ConfigError => e
   say "#{e.class} - #{e.message}"

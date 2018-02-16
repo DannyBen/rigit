@@ -10,33 +10,35 @@ module Rigit::Commands
     class Installer
       include Colsole
 
-      attr_reader :args, :rig_name, :repo, :target_dir
+      attr_reader :args, :rig_name, :repo
 
       def initialize(args)
         @args = args
         @rig_name = args['RIG']
         @repo = args['REPO']
-        @target_dir = "#{ENV['RIG_HOME']}/#{name}"
       end
 
       def execute
         verify_dirs
-        
-        say "Installing !txtgrn!#{repo}\n"
-        FileUtils.mkdir_p target_path unless Dir.exist? target_path
-        success = pull_repo
- 
-        if success
-          say "\nRig installed !txtgrn!successfully!txtrst! in !txtgrn!#{target_dir}"
-          say "To build a new project with this rig, run this in any empty directory:\n"
-          say "  !txtpur!rig build #{rig_name}"
-        end
+        install
       end
 
       private
 
+      def install
+        say "Installing !txtgrn!#{repo}\n"
+        FileUtils.mkdir_p target_path unless Dir.exist? target_path
+        success = pull_repo
+
+        if success
+          say "\nRig installed !txtgrn!successfully!txtrst! in !txtgrn!#{target_path}"
+          say "To build a new project with this rig, run this in any empty directory:\n"
+          say "  !txtpur!rig build #{rig_name}\n"
+        end
+      end
+
       def pull_repo
-        system "git clone #{repo} #{target_dir}"
+        system "git clone #{repo} #{target_path}"
         $?.exitstatus == 0
       end
 
@@ -45,18 +47,19 @@ module Rigit::Commands
       end
 
       def rig
-        @rig ||= Rig.new rig_name
+        @rig ||= Rigit::Rig.new rig_name
       end
 
-      def target_dir
-        @target_dir ||= rig.path
+      def target_path
+        @target_path ||= rig.path
       end
 
       def verify_dirs
-        if Dir.exist? rig.path
+        if Dir.exist? target_path
           say "Rig !txtgrn!#{rig_name}!txtrst! is already installed."
-          continue = tty_prompt.yes? "Update?"
-          raise Rigit::Exit, 'Goodbye' unless continue
+          say "In order to update it from the source repository, run:\n"
+          say "  !txtpur!rig update #{rig_name}\n"
+          raise Rigit::Exit
         end
       end
     end
