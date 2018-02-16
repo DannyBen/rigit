@@ -10,14 +10,12 @@ describe Commands::Install::Installer do
         File.deep_write 'examples/pulled/touchy-file', 'i am touched'
       end
 
-      it 'raises Exit' do
+      it 'shows a friendly message and raises Exit' do
         supress_output do
+          allow(subject).to receive(:say)
+          expect(subject).to receive(:say).with('Rig !txtgrn!pulled!txtrst! is already installed')
           expect{ subject.execute }.to raise_error(Rigit::Exit)
         end
-      end
-
-      it 'shows a friendly message' do
-        expect{ subject.execute }.to output(/pulled.*already installed.*rig update pulled/m).to_stdout rescue Rigit::Exit
       end
     end
 
