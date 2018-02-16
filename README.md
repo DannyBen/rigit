@@ -12,3 +12,32 @@ Soon
 
 ---
 
+Table of Contents
+--------------------------------------------------
+
+* [Installation](#installation)
+* [Quick Start](#quick-start)
+* [Installing Rigs](#installing-rigs)
+   * [From remote git repositories](#from-remote-git-repositories)
+   * [From local files](#from-local-files)
+* [Building Rigs](#building-rigs)
+
+
+Installation
+--------------------------------------------------
+
+
+Quick Start
+--------------------------------------------------
+
+
+Installing Rigs
+--------------------------------------------------
+
+### From remote git repositories
+
+### From local files
+
+
+Building Rigs
+--------------------------------------------------

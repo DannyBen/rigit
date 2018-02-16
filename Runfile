@@ -20,9 +20,8 @@ action :console, :c do
   run "bundle exec bin/console"
 end
 
-action :debug do
-  Dir.chdir 'example' do
-    run 'rm -rf target'
-    Rigit::CommandLine.execute %w[build source target]
-  end
+help   "Generate TOC to toc.txt"
+action :toc do
+  run! 'gh-md-toc README.md > toc.txt'
 end
+
