@@ -1,0 +1,34 @@
+require 'stringio'
+
+module SpecMixin
+  def stdin_send(*args)
+    begin
+      $stdin = StringIO.new
+      $stdin.puts(args.shift) until args.empty?
+      $stdin.rewind
+      yield
+    ensure
+      $stdin = STDIN
+    end
+  end
+
+  def ls
+    Dir['**/*'].sort.to_s
+  end
+
+  def without_env(var, &block)
+    with_env var, nil, &block
+  end
+
+  def with_env(var, value)
+    oritinal_value = ENV[var]
+    ENV[var] = value
+    yield
+    ENV[var] = oritinal_value
+  end
+
+  def reset_workdir
+    system 'rm -rf spec/tmp' if Dir.exist? 'spec/tmp'
+    Dir.mkdir 'spec/tmp'
+  end
+end

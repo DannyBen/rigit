@@ -1,19 +1,33 @@
 require 'spec_helper'
 
 describe Rig do
+  subject { described_class.new 'minimal'}
 
   describe '::home' do
     context 'when RIG_HOME is not set' do
-      it 'returns ~/.rigs'
+      it 'returns ~/.rigs' do
+        without_env 'RIG_HOME' do
+          expect(Rig.home).to eq "#{Dir.home}/.rigs"
+        end
+      end
     end
 
     context 'when RIG_HOME is set' do
-      it 'returns RIG_HOME' 
+      it 'returns RIG_HOME' do
+        with_env 'RIG_HOME', 'some/path' do
+          expect(Rig.home).to eq "some/path"
+        end
+      end
     end
   end
 
   describe '::home=' do
-    it 'sets RIG_HOME'
+    it 'sets Rig.home' do
+      without_env 'RIG_HOME' do
+        Rig.home = 'some/new/path'
+        expect(Rig.home).to eq 'some/new/path'
+      end      
+    end
   end
 
   describe '#scaffold' do
@@ -21,8 +35,6 @@ describe Rig do
     before { reset_workdir }
 
     context 'with minimal example and no config' do
-      subject { described_class.new 'minimal'}
-
       it 'copies all files and folders' do
         Dir.chdir workdir do
           subject.scaffold
@@ -58,24 +70,38 @@ describe Rig do
   end
 
   describe '#path' do
-    it 'returns full rig path'
+    it 'returns full rig path' do
+      expect(subject.path).to eq "#{Rig.home}/#{subject.name}"
+    end
   end
 
   describe '#exist?' do
     context 'when the rig path exists' do
-      it 'returns true'
+      it 'returns true' do
+        expect(subject).to exist
+      end
     end
 
     context 'when the rig path does not exist' do
-      it 'returns false'
+      subject { Rig.new 'no-such-rig'}
+
+      it 'returns false' do
+        expect(subject).not_to exist
+      end
     end
   end
 
   describe '#config_file' do
-    it 'returns path to config file'    
+    it 'returns path to config file' do
+      expect(subject.config_file).to eq "#{subject.path}/config.yml"
+    end
   end
 
   describe '#config' do
-    it 'returns the config object'
+    subject { described_class.new 'full' }
+
+    it 'returns the config object' do
+      expect(subject.config.intro).to eq 'If you rig it, they will come'
+    end
   end
 end

@@ -1,3 +1,5 @@
+require 'colsole'
+
 module Rigit::Commands
   module Build
     def build
@@ -7,6 +9,8 @@ module Rigit::Commands
     class Builder
       attr_reader :args, :rig_name, :target_dir
 
+      include Colsole
+
       def initialize(args)
         @args = args
         @rig_name = args['RIG']
@@ -14,16 +18,18 @@ module Rigit::Commands
       end
 
       def execute
-        puts "#{config.intro}\n\n" if config.has_key? :intro
+        say "Building !txtgrn!#{rig_name}"
+        say "!txtblu!#{config.intro}\n\n" if config.has_key? :intro
         verify_dirs
         arguments = prompt.get_input params
         rig.scaffold arguments:arguments, target_dir: target_dir
+        say "Done"
       end
 
       private
 
       def rig
-        @rig ||= Rig.new rig_name
+        @rig ||= Rigit::Rig.new rig_name
       end
 
       def config
