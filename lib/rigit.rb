@@ -9,3 +9,8 @@ require 'rigit/prompt'
 require 'rigit/rigger'
 
 ENV['RIG_HOME'] ||= File.expand_path('.rigs', Dir.home)
+
+module Rigit
+  module Commands
+  end
+end

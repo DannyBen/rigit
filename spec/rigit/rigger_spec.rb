@@ -5,6 +5,7 @@ describe Rigger do
   describe '#scaffold' do
     let(:workdir) { 'spec/tmp' }
     before { reset_workdir }
+    let(:ls) { Dir['**/*'].sort.to_s }
 
     context 'with minimal example and no config' do
       subject { described_class.new 'minimal'}
@@ -12,7 +13,7 @@ describe Rigger do
       it 'copies all files and folders' do
         Dir.chdir workdir do
           subject.scaffold
-          expect(Dir['**/*'].to_s).to match_fixture 'ls/minimal'
+          expect(ls).to match_fixture 'ls/minimal'
         end
       end
     end
@@ -24,7 +25,7 @@ describe Rigger do
       it 'copies all files and folders', :focus do
         Dir.chdir workdir do
           subject.scaffold
-          expect(Dir['**/*'].to_s).to match_fixture 'ls/full'
+          expect(ls).to match_fixture 'ls/full'
         end
       end
 
