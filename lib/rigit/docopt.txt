@@ -2,10 +2,16 @@ Rigit
 
 Usage:
   rig build RIG [PARAMS...]
+  rig install RIG REPO
 
 Parameters:
   RIG
     The name of the source folder (installed rig).
 
+  REPO
+    A git repository containing rig configuration. 
+    Use the 'clone URL' for the repository.
+
 Examples:
   rig build gem name=mygem
+  rig install example https://github.com/DannyBen/example-rig.git

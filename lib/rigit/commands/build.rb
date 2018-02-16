@@ -1,5 +1,3 @@
-require 'super_docopt'
-
 module Rigit::Commands
   module Build
     def build
@@ -7,27 +5,29 @@ module Rigit::Commands
     end
 
     class Builder
-      attr_reader :args, :source, :target_dir, :source_dir
+      attr_reader :args, :rig_name, :target_dir
 
       def initialize(args)
         @args = args
-        @source = args['RIG']
+        @rig_name = args['RIG']
         @target_dir = '.'
-        @source_dir = "#{ENV['RIG_HOME']}/#{source}"
       end
 
       def execute
         puts "#{config.intro}\n\n" if config.has_key? :intro
         verify_dirs
         arguments = prompt.get_input params
-        rigger = Rigit::Rigger.new source, arguments
-        rigger.scaffold
+        rig.scaffold arguments:arguments, target_dir: target_dir
       end
 
       private
 
+      def rig
+        @rig ||= Rig.new rig_name
+      end
+
       def config
-        @config ||= config_for source
+        @config ||= rig.config
       end
 
       def params
@@ -52,19 +52,13 @@ module Rigit::Commands
         @tty_prompt ||= TTY::Prompt.new
       end
 
-      def config_for(source)
-        Rigit::Config.load("#{ENV['RIG_HOME']}/#{source}/config.yml")
-      end
-
       def verify_dirs
         verify_source_dir
         verify_target_dir
       end
 
       def verify_source_dir
-        if !Dir.exist? source_dir
-          raise Rigit::Exit, "No such rig: #{source}"
-        end
+        raise Rigit::Exit, "No such rig: #{source}" unless rig.exist?
       end
 
       def verify_target_dir

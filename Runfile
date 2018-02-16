@@ -25,3 +25,6 @@ action :toc do
   run! 'gh-md-toc README.md > toc.txt'
 end
 
+action :debug do
+  a = Rigit::Rig.new 'full'
+end

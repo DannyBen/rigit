@@ -5,6 +5,8 @@ require 'rubygems'
 require 'bundler'
 Bundler.require :default, :development
 
+include Rigit
+
 require 'stringio'
 
 module RSpecMixin
@@ -33,7 +35,4 @@ RSpec.configure do |c|
   c.include RSpecMixin
 end
 
-ENV['RIG_HOME'] = "#{Dir.pwd}/examples"
-
-include Rigit
-
+Rig.home = "#{Dir.pwd}/examples"

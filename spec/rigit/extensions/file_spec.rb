@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe File do
-  describe '::deep_write', :focus do
+  describe '::deep_write' do
     let(:dir) { 'spec/tmp/deep/folder' }
     let(:file) { "#{dir}/file.txt" }
     let(:content) { "some content" }

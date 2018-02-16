@@ -1,15 +1,17 @@
 #!/usr/bin/env ruby
 require 'rigit'
+require 'colsole'
+include Colsole
 
 begin
   Rigit::CommandLine.execute ARGV
 rescue Rigit::Exit => e
-  puts e.message
+  say e.message
   exit 1
 rescue Rigit::ConfigError => e
-  puts "#{e.class} - #{e.message}"
+  say "#{e.class} - #{e.message}"
   exit 1
 rescue TTY::Reader::InputInterrupt
-  puts "\nGoodbye"
+  say "\nGoodbye"
   exit 1
 end
