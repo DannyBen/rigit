@@ -16,6 +16,8 @@ Table of Contents
 --------------------------------------------------
 
 * [Installation](#installation)
+* [Features](#features)
+* [Usage](#usage)
 * [Quick Start](#quick-start)
 * [Installing Rigs](#installing-rigs)
 * [Using Rigs (Scaffolding)](#using-rigs-scaffolding)
@@ -26,6 +28,21 @@ Table of Contents
 
 Installation
 --------------------------------------------------
+
+
+Features
+--------------------------------------------------
+
+Usage
+--------------------------------------------------
+
+```
+$ rig
+Usage:
+  rig build RIG [PARAMS...]
+  rig install RIG REPO
+  rig update RIG
+```
 
 
 Quick Start
