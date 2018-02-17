@@ -216,7 +216,7 @@ specifications:
 |-----------|----------------------------------------------------------|
 | `prompt`  | The text to display when asking for user input           |
 | `type`    | The variable tyoe. Can be `yesno`, `text` or `select`    |
-| `default` | The default value. When using 'yesno', use 'y' and 'n'   |
+| `default` | The default value. When using `yesno`, use `y` and `n`   |
 | `list`    | An array of allowed options (only used in `select` type) |
 
 ---
