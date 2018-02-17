@@ -49,4 +49,12 @@ describe CommandLine do
       expect{ described_class.execute argv }.to output(/name.*minimal.*path.*config.*\<empty\>/m).to_stdout
     end
   end
+
+  describe 'list' do
+    let(:argv) { %w[list] }
+
+    it 'works' do
+      expect{ described_class.execute argv }.to output(/- full.*- minimal/m).to_stdout
+    end
+  end
 end

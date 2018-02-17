@@ -1,5 +1,0 @@
-params:
-  name:
-    prompt: "Name your project:"
-    type: no-such-type
-    default: project

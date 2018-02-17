@@ -63,6 +63,7 @@ Usage:
   rig install RIG REPO
   rig update RIG
   rig info RIG
+  rig list [SUBFOLDER]
   rig (-h|--help|--version)
 ```
 
