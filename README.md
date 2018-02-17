@@ -29,12 +29,13 @@ Table of Contents
     * [Config File](#config-file)
 
 
+
 Installation
 --------------------------------------------------
 
-```
-$ gem install rigit
-```
+    $ gem install rigit
+
+
 
 Key Features
 --------------------------------------------------
@@ -48,6 +49,8 @@ In Rigit, we call these templates "rigs".
 - String replacement in file names and file contents.
 - Install rigs from any remote git repository.
 
+
+
 Usage
 --------------------------------------------------
 
@@ -59,6 +62,7 @@ Usage:
   rig update RIG
   rig (-h|--help|--version)
 ```
+
 
 
 Quick Start
@@ -83,6 +87,7 @@ Now that your rig is installed (in `~/.rigs`), you can use it.
 Input all the answers, and you are done. Your project has been rigged.
 
 
+
 Installing Rigs
 --------------------------------------------------
 
@@ -95,6 +100,7 @@ To install a rig, simply use the `rig install` command, and supply a name
 the same url as you would use in "git clone").
 
     $ rig install example https://github.com/DannyBen/example-rig.git
+
 
 
 Using Rigs (Scaffolding)
@@ -110,6 +116,7 @@ create the project root directory for you.
 
 Most rigs will have parameters, you will be prompted to input them as needed.
 
+
 ### Non-Interactive Execution
 
 You can also provide some (or all) of the parameters in the command line, 
@@ -122,12 +129,43 @@ To learn about the parameters of a rig:
     $ rig info example (TODO: NOT IMPLEMENTED)
 
 
+
 Creating Rigs
 --------------------------------------------------
 
+> **Tip**: Take a look at the [example rig][example-rig] while reading 
+> this section.
+
+Rigit's main design goal was to allow rapid and easy creation of new 
+templates. There is no coding involved in creating a rig, and instead we 
+are using folders with specific names, to allow for a sort of "additive" 
+project building.
+
+The steps in creating a rig are:
+
+1. Start in a new, empty folder.
+2. Create a folder named `base`. Put all the files and folders of your 
+   project inside.
+3. Rename files and folders, and files as needed to include dynamic tokens.
+4. If you want to add some of the files only in specific cases (for example
+   only include a license file if the user wants to), you move the files to
+   a folder with s special `parameter=value` folder.
+5. Create a config file to specify the needed parameters.
+
+
 ### Directory Structure
 
+There are two types of folders in a rig template.
+
+1. Base folder (`base`) - files and folders here will be copied always
+2. Conditional folders (`parameter=value`) - contents in these folders will
+   only be copied if the user answerd `value` to the question `parameter`.
+
+
+### Dynamic Tokens
+
 Soon
+
 
 ### Config File
 
