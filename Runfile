@@ -25,6 +25,7 @@ action :toc do
   run! 'gh-md-toc README.md > toc.txt'
 end
 
-action :debug do
-  a = Rigit::Rig.new 'full'
+help   "Generate changelog"
+action :changelog do
+  run! 'github_changelog_generator --cache-file tmp/changlog-cache'  
 end

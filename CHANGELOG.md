@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/DannyBen/rigit/tree/HEAD)
-
-[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.0.2...HEAD)
+## [v0.0.3](https://github.com/DannyBen/rigit/tree/v0.0.3) (2018-02-17)
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.0.2...v0.0.3)
 
 **Implemented enhancements:**
 
