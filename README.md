@@ -8,9 +8,9 @@ Rigit
 
 ---
 
-![Rigit](rigit-header.png)
-
 Build project templates easily, and without the need to write code.
+
+![Rigit](rigit-header.png)
 
 ---
 
@@ -26,6 +26,7 @@ Table of Contents
     * [Non-Interactive Execution](#non-interactive-execution)
 * [Creating Rigs](#creating-rigs)
     * [Directory Structure](#directory-structure)
+    * [Dynamic Tokens](#dynamic-tokens)
     * [Config File](#config-file)
 
 
@@ -44,10 +45,11 @@ Rigit was designed to allow the rapid building of reusable project templates.
 In Rigit, we call these templates "rigs".
 
 - No coding required.
-- Conventions-based folder structure.
-- A minimalistic configuration file to allow specifying needed parameters.
-- String replacement in file names and file contents.
-- Install rigs from any remote git repository.
+- Conventions-based [folder structure](#directory-structure).
+- A minimalistic [configuration file](#config-file) to allow specifying 
+  needed parameters.
+- [String replacement](#dynamic-tokens) in file names and file contents.
+- [Install rigs](#installing-rigs) from any remote git repository.
 
 
 
@@ -164,13 +166,58 @@ There are two types of folders in a rig template.
 
 ### Dynamic Tokens
 
-Soon
+You can use variable replacements (tokens) in file names, folder names and in
+file contents.
+
+Each token that you use, must also be declared in the config file.
+
+Tokens are specified using this syntax: 
+
+    %{name}
 
 
 ### Config File
 
-Soon
+Place a `config.yml` file at the root of your rig template. A config file
+is optional for rigs that do not have any variables.
 
+A typical config file looks like this:
+
+```yaml
+intro: A sample generator
+
+params:
+  name:
+    prompt: "Name your project:"
+    type: text
+    default: project
+
+  spec: 
+    prompt: Include RSpec files?
+    type: yesno
+    default: y
+
+  console:
+    prompt: "Select console:"
+    type: select
+    list: [irb, pry]
+```
+
+| Key      | Purpose                                                 |
+|----------|---------------------------------------------------------|
+| `intro`  | A short message to display when building (Optional)     |
+| `params` | A list of parameters required by the rig                |
+
+The `params` key should start with the name of the variable (`name`, 
+`spec` and `console` in the above example), and contain the below 
+specifications:
+
+| Key       | Purpose                                                  |
+|-----------|----------------------------------------------------------|
+| `prompt`  | The text to display when asking for user input           |
+| `type`    | The variable tyoe. Can be `yesno`, `text` or `select`    |
+| `default` | The default value. When using 'yesno', use 'y' and 'n'   |
+| `list`    | An array of allowed options (only used in `select` type) |
 
 ---
 
