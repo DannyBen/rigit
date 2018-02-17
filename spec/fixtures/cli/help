@@ -5,6 +5,7 @@ Usage:
   rig install RIG REPO
   rig update RIG
   rig info RIG
+  rig list [SUBFOLDER]
   rig (-h|--help|--version)
 
 Commands:
@@ -24,6 +25,10 @@ Commands:
   info
     Show some meta information about an installed rig.
 
+  list
+    Show a list of installed rigs. If a subfolder is provided, show a list
+    of subfolders (possibly rigs) inside it.
+
 Parameters:
   RIG
     The name of the source folder (installed rig).
@@ -36,6 +41,9 @@ Parameters:
     Specify any of the rig's parameters in the format 'param=value'.
     For boolean parameters, use 'param=y' or 'param=n'.
 
+  SUBFOLDER
+    A folder inside your rigs directory.
+
 Environment Variables:
   RIG_HOME
     The path where your local rigs are installed (default: ~/.rigs)
@@ -45,3 +53,4 @@ Examples:
   rig install example https://github.com/DannyBen/example-rig.git
   rig update example
   rig info example
+  rig list

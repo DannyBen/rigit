@@ -1,1 +1,5 @@
-pulled
+# This folder is also used in specs, and it may temporarily contain
+# these two folders, that have no business being in the repo
+
+/pulled
+/broken
