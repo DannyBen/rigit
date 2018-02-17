@@ -14,13 +14,15 @@ module Rigit
       @name = name
     end
 
-    def scaffold(arguments: {}, target_dir:'.')
-      scaffold_dir "#{path}/base", arguments, target_dir
+    def scaffold(arguments: {}, target_dir:'.', &block)
+      scaffold_dir dir: "#{path}/base", arguments: arguments, 
+        target_dir: target_dir, &block
 
       arguments.each do |key, value| 
         additive_dir = "#{path}/#{key}=#{value}"
         if Dir.exist? additive_dir
-          scaffold_dir additive_dir, arguments, target_dir
+          scaffold_dir dir: additive_dir, arguments: arguments, 
+            target_dir: target_dir, &block
         end
       end
     end
@@ -55,11 +57,15 @@ module Rigit
 
     private
 
-    def scaffold_dir(dir, arguments, target_dir)
+    def scaffold_dir(dir:, arguments:, target_dir:)
       files = Dir["#{dir}/**/*"].reject { |file| File.directory? file }
 
       files.each do |file|
         target_file = (file % arguments).sub dir, target_dir
+
+        continue = block_given? ? yield(target_file) : true
+        next unless continue
+
         content = File.read(file) % arguments
         File.deep_write target_file, content
       end
