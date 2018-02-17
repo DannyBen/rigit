@@ -1,0 +1,4 @@
+# %{license}.license
+
+name: %{name}
+license: %{license}

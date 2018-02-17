@@ -65,7 +65,12 @@ module Rigit
 
         next if block_given? and !yield target_file
 
-        content = File.read(file) % arguments
+        begin
+          content = File.read(file) % arguments
+        rescue ArgumentError => e
+          raise TemplateError.new file, e.message
+        end
+        
         File.deep_write target_file, content
       end
     end

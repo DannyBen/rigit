@@ -22,7 +22,7 @@ describe CommandLine do
 
   describe 'install' do
     let(:argv) { %w[install pulled https://github.com/some/repo.git] }
-    before { system 'rm -rf examples/pulled' if Dir.exist? 'examples/pulled' }
+    before { system "rm -rf #{Rig.home}/pulled" if Dir.exist? "#{Rig.home}/pulled" }
 
     it 'works' do
       with_env 'SIMULATE_GIT' do
@@ -33,7 +33,7 @@ describe CommandLine do
 
   describe 'update' do
     let(:argv) { %w[update pulled] }
-    before { FileUtils.mkdir 'examples/pulled' unless Dir.exist? 'examples/pulled' }
+    before { FileUtils.mkdir "#{Rig.home}/pulled" unless Dir.exist? "#{Rig.home}/pulled" }
 
     it 'works' do
       with_env 'SIMULATE_GIT' do

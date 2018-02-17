@@ -12,4 +12,4 @@ RSpec.configure do |c|
   c.include SpecMixin
 end
 
-Rig.home = "#{Dir.pwd}/examples"
+Rig.home = "#{Dir.pwd}/spec/rigs"
