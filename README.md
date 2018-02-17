@@ -165,6 +165,18 @@ There are two types of folders in a rig template.
 2. Conditional folders (`parameter=value`) - contents in these folders will
    only be copied if the user answerd `value` to the question `parameter`.
 
+A typical rig folder looks like this:
+
+    myrig
+    |-- base
+    |   |-- files
+    |   `-- and-folders
+    |-- param=y
+    |   |-- files
+    |   `-- and-folders
+    |-- param=n
+    `-- config.yml
+
 
 ### Dynamic Tokens
 
