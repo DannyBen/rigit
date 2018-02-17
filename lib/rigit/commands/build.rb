@@ -22,7 +22,13 @@ module Rigit::Commands
         say "!txtblu!#{config.intro}" if config.has_key? :intro
         verify_dirs
         arguments = prompt.get_input params
-        rig.scaffold arguments:arguments, target_dir: target_dir
+        rig.scaffold arguments:arguments, target_dir: target_dir do |file|
+          if File.exist? file
+            tty_prompt.yes? "Overwrite #{file}?", default: false
+          else
+            true
+          end
+        end
         say "Done"
       end
 

@@ -49,8 +49,10 @@ describe Commands::Build::BuildHandler do
 
       it "asks if the user wants to continue" do
         Dir.chdir workdir do
-          stdin_send('n') do 
-            expect{ subject.execute }.to output(/asd/).to_stdout rescue Rigit::Exit
+          supress_output do
+            stdin_send('n') do 
+              expect{ subject.execute }.to raise_error(Rigit::Exit)
+            end
           end
           expect(ls).to match_fixture 'ls/not-empty'
         end
@@ -76,6 +78,42 @@ describe Commands::Build::BuildHandler do
               expect{ subject.execute }.to output(/Building.*minimal.*yes.*Done/m).to_stdout
             end
             expect(ls).to match_fixture 'ls/not-empty-after'
+          end
+        end
+      end
+    end
+
+    context "when files with the same name exist" do
+      let(:args) {{ 'RIG' => 'minimal', 'PARAMS' => [] }}
+      before { File.deep_write "#{workdir}/some-file.txt", 'OLD CONTENT' }
+
+      it "asks if the user wants to ovrewrite" do
+        Dir.chdir workdir do
+          stdin_send('y', 'n') do
+            expect{ subject.execute }.to output(/Overwrite .\/some-file.txt\?.*No/).to_stdout
+          end
+        end
+      end
+
+      context "when the user answers no" do
+        it "keeps the old content" do
+          Dir.chdir workdir do
+            stdin_send('y', 'n') do
+              expect{ subject.execute }.to output(/Overwrite .\/some-file.txt\?.*No/).to_stdout
+            end
+            expect(File.read 'some-file.txt').to eq 'OLD CONTENT'
+          end
+        end
+      end
+
+
+      context "when the user answers yes" do
+        it "copies the file content" do
+          Dir.chdir workdir do
+            stdin_send('y', 'y') do
+              expect{ subject.execute }.to output(/Overwrite .\/some-file.txt\?.*yes/).to_stdout
+            end
+            expect(File.read 'some-file.txt').to eq 'static content'
           end
         end
       end
