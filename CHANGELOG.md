@@ -1,5 +1,16 @@
 # Change Log
 
+## [v0.1.0](https://github.com/DannyBen/rigit/tree/v0.1.0) (2018-02-17)
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.0.3...v0.1.0)
+
+**Implemented enhancements:**
+
+- Add rig list command [\#6](https://github.com/DannyBen/rigit/issues/6)
+
+**Merged pull requests:**
+
+- Add rig list command [\#15](https://github.com/DannyBen/rigit/pull/15) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.0.3](https://github.com/DannyBen/rigit/tree/v0.0.3) (2018-02-17)
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.0.2...v0.0.3)
 
