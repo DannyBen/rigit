@@ -1,0 +1,4 @@
+content with a percent sign that is not escaped:
+
+%Q[...]
+

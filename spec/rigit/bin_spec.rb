@@ -29,13 +29,15 @@ describe 'bin/rig' do
       end
     end
 
-    context "with an invalid rig config" do
-      before do
-        system 'rm -rf examples/broken' if Dir.exist? 'examples/bdoken'
-        system 'cp -R examples/minimal examples/broken'
-        system 'cp spec/fixtures/prompt-invalid.yml examples/broken/config.yml'
+    context "when there is a template error" do
+      it "exits with grace" do
+        Dir.chdir workdir do
+          expect(`../../bin/rig build template-error`).to match(/TemplateError.*malformed format string/m)
+        end
       end
+    end
 
+    context "with an invalid rig config" do
       it "exits with grace" do
         Dir.chdir workdir do
           expect(`../../bin/rig build broken`).to match_fixture('cli/build-broken')

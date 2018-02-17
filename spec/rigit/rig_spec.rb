@@ -67,6 +67,18 @@ describe Rig do
         end
       end
     end
+
+    context 'with templates that contain errors' do
+      let(:arguments) {{ name: 'myapp' }}
+      subject { described_class.new 'template-error' }
+
+      it 'raises TemplateError' do
+        Dir.chdir workdir do
+          expect { subject.scaffold }.to raise_error(TemplateError)
+        end
+      end
+    end
+
   end
 
   describe '#path' do
