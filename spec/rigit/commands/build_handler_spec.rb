@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Commands::Build::Builder do
+describe Commands::Build::BuildHandler do
   let(:args) {{ 'RIG' => 'full', 'PARAMS' => [] }}
   subject { described_class.new args }
 

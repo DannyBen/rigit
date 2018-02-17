@@ -62,6 +62,7 @@ Usage:
   rig build RIG [PARAMS...]
   rig install RIG REPO
   rig update RIG
+  rig info RIG
   rig (-h|--help|--version)
 ```
 
@@ -128,7 +129,7 @@ if you need to avoid interactivity.
 
 To learn about the parameters of a rig:
 
-    $ rig info example (TODO: NOT IMPLEMENTED)
+    $ rig info example
 
 
 

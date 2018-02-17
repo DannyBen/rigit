@@ -1,15 +1,13 @@
 require 'spec_helper'
 
-describe Commands::Update::Updater do
-  let(:args) {{ 'RIG' => 'pulled' }}
+describe Commands::Info::InfoHandler do
+  let(:args) {{ 'RIG' => 'full' }}
   subject { described_class.new args }
 
   describe '#execute' do
     context "when the rig is installed" do
-      it "pulls the rig from the git repo" do
-        with_env 'SIMULATE_GIT' do
-          expect{ subject.execute }.to output_fixture('cli/update')
-        end
+      it "shows meta information" do
+        expect{ subject.execute }.to output_fixture('cli/info')
       end
     end
 
@@ -18,7 +16,7 @@ describe Commands::Update::Updater do
 
       it 'shows a friendly message and raises Exit' do
         supress_output do
-          expect(subject).to receive(:say).with('Rig !txtgrn!no-such-rig!txtrst! is not installed')
+          expect(subject).to receive(:say).with('Cannot find rig !txtgrn!no-such-rig')
           expect{ subject.execute }.to raise_error(Rigit::Exit)
         end
       end

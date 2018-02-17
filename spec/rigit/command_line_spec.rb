@@ -41,4 +41,12 @@ describe CommandLine do
       end
     end
   end
+
+  describe 'info' do
+    let(:argv) { %w[info minimal] }
+
+    it 'works' do
+      expect{ described_class.execute argv }.to output_fixture('cli/info-minimal')
+    end
+  end
 end

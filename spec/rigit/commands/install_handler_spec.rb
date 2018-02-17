@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Commands::Install::Installer do
+describe Commands::Install::InstallHandler do
   let(:args) {{ 'RIG' => 'pulled', 'REPO' => 'https://some.repo/url' }}
   subject { described_class.new args }
 
