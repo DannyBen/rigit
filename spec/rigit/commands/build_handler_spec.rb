@@ -119,10 +119,6 @@ describe Commands::Build::BuildHandler do
       end
     end
 
-
-
-
-
     context "when the source dir does not exist" do
       let(:args) {{ 'RIG' => 'no-such-rig', 'PARAMS' => [] }}
 

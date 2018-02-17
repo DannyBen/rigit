@@ -63,8 +63,7 @@ module Rigit
       files.each do |file|
         target_file = (file % arguments).sub dir, target_dir
 
-        continue = block_given? ? yield(target_file) : true
-        next unless continue
+        next if block_given? and !yield target_file
 
         content = File.read(file) % arguments
         File.deep_write target_file, content
