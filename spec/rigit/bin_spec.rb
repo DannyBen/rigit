@@ -7,6 +7,12 @@ describe 'bin/rig' do
     end
   end
 
+  context "without --help" do
+    it "shows extended usage" do
+      expect(`bin/rig --help`).to match_fixture('cli/help')
+    end
+  end
+
   describe 'build' do
     let(:workdir) { 'spec/tmp' }
     before { reset_workdir }

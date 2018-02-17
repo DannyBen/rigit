@@ -3,10 +3,10 @@ require 'colsole'
 module Rigit::Commands
   module Build
     def build
-      Builder.new(args).execute
+      BuildHandler.new(args).execute
     end
 
-    class Builder
+    class BuildHandler
       attr_reader :args, :rig_name, :target_dir
 
       include Colsole

@@ -4,10 +4,10 @@ require 'colsole'
 module Rigit::Commands
   module Install
     def install
-      Installer.new(args).execute
+      InstallHandler.new(args).execute
     end
 
-    class Installer
+    class InstallHandler
       include Colsole
 
       attr_reader :args, :rig_name, :repo

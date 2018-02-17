@@ -45,4 +45,3 @@ Examples:
   rig install example https://github.com/DannyBen/example-rig.git
   rig update example
   rig info example
-

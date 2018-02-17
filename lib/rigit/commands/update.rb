@@ -3,10 +3,10 @@ require 'colsole'
 module Rigit::Commands
   module Update
     def update
-      Updater.new(args).execute
+      UpdateHandler.new(args).execute
     end
 
-    class Updater
+    class UpdateHandler
       include Colsole
 
       attr_reader :args, :rig_name

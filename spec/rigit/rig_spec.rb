@@ -83,10 +83,27 @@ describe Rig do
     end
 
     context 'when the rig path does not exist' do
-      subject { Rig.new 'no-such-rig'}
+      subject { described_class.new 'no-such-rig'}
 
       it 'returns false' do
         expect(subject).not_to exist
+      end
+    end
+  end
+
+  describe '#has_config?' do
+
+    context 'when the rig has a config file' do
+      subject { described_class.new 'full'}
+
+      it 'returns true' do
+        expect(subject).to have_config
+      end
+    end
+
+    context 'when the rig does not have a config file' do
+      it 'returns false' do
+        expect(subject).not_to have_config
       end
     end
   end
@@ -103,5 +120,21 @@ describe Rig do
     it 'returns the config object' do
       expect(subject.config.intro).to eq 'If you rig it, they will come'
     end
+  end
+
+  describe '#info' do
+    it "returns a hash with meta data" do
+      expect(subject.info).to be_a Hash
+      expect(subject.info[:name]).to eq 'minimal'
+    end
+
+    context "when the rig has a config file" do
+      subject { described_class.new 'full' }
+      
+      it "returns the config yaml in the config key" do
+        expect(subject.info[:config]).to match_fixture('info-config.yml')
+      end
+    end
+
   end
 end

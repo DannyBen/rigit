@@ -33,12 +33,24 @@ module Rigit
       Dir.exist? path
     end
 
+    def has_config?
+      File.exist? config_file
+    end
+
     def config_file
       "#{path}/config.yml"
     end
 
     def config
       @config ||= Config.load(config_file)
+    end
+
+    def info
+      {
+        name: name,
+        path: path,
+        config: (has_config? ? File.read(config_file) : '<empty>')
+      }
     end
 
     private
