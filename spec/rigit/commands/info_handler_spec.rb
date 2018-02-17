@@ -7,7 +7,7 @@ describe Commands::Info::InfoHandler do
   describe '#execute' do
     context "when the rig is installed" do
       it "shows meta information" do
-        expect{ subject.execute }.to output_fixture('cli/info')
+        expect{ subject.execute }.to output(/name.*full.*path.*config.*intro.*If you rig it, they will come.*params.*prompt.*Name your project/m).to_stdout
       end
     end
 

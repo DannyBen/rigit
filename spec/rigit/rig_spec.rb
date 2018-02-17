@@ -132,7 +132,7 @@ describe Rig do
       subject { described_class.new 'full' }
       
       it "returns the config yaml in the config key" do
-        expect(subject.info[:config]).to match_fixture('info-config')
+        expect(subject.info[:config]).to match_fixture('info-config.yml')
       end
     end
 
