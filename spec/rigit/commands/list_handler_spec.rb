@@ -16,7 +16,7 @@ describe Commands::List::ListHandler do
 
       it 'shows a list of subfolders' do
         supress_output do
-          expect{ subject.execute }.to output(/Subfolders.*- base.*- subfolder/m).to_stdout
+          expect{ subject.execute }.to output(/Subfolders.*- base/m).to_stdout
         end
       end
     end
