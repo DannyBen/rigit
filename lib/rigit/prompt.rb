@@ -1,6 +1,10 @@
 require 'tty-prompt'
 
 module Rigit
+  # Handles prompt request for user input in batch.
+  # This is a wrapper around +TTY::Prompt+ that gets all the params (typically
+  # from the rig config file), and asks the user for input one by one, while 
+  # considering prefilled values.
   class Prompt
     attr_reader :params
 
@@ -8,6 +12,9 @@ module Rigit
       @params = params
     end
 
+    # Asks the user for input. If a +prefill+ hash is provided, it will be
+    # used for values, and skip asking the user to provide answers for the
+    # ones that are prefilled.
     def get_input(prefill={})
       result = {}
       params.each do |key, spec|

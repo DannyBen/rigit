@@ -1,11 +1,16 @@
 require 'colsole'
 
 module Rigit::Commands
+  # The {Build} module provides the {#build} command for the {CommandLine}
+  # module.
   module Build
+
+    # The command line +build+ command.
     def build
       BuildHandler.new(args).execute
     end
 
+    # Internal class to handle scaffolding for the {CommandLine} class.
     class BuildHandler
       attr_reader :args, :rig_name, :target_dir
 

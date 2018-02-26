@@ -2,11 +2,15 @@ require 'fileutils'
 require 'colsole'
 
 module Rigit::Commands
+  # The {Install} module provides the {#install} command for the 
+  # {CommandLine} module.
   module Install
+    # The command line +install+ command.
     def install
       InstallHandler.new(args).execute
     end
 
+    # Internal class to handle rig installation for the {CommandLine} class.
     class InstallHandler
       include Colsole
 

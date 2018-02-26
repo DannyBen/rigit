@@ -1,11 +1,17 @@
 require 'colsole'
 
 module Rigit::Commands
+  # The {Info} module provides the {#info} command for the {CommandLine}
+  # module.
   module Info
+    
+    # The command line +info+ command.
     def info
       InfoHandler.new(args).execute
     end
 
+    # Internal class to handle the display of metadata about a rig for the 
+    # {CommandLine} class.
     class InfoHandler
       include Colsole
 

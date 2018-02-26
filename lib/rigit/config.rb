@@ -2,9 +2,15 @@ require 'configatron/core'
 require 'yaml'
 
 module Rigit
+  # Handles the rig config file.
+  # Usage example: 
+  # 
+  #    Config.load 'path/to.yml'
+  #
   class Config
     attr_reader :path
 
+    # Returns a new +configatron+ instance, after loading from a YAML file.
     def self.load(path)
       new(path).settings
     end
