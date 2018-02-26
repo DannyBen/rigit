@@ -19,7 +19,7 @@ module Rigit
     # of an existing (installed) rig.
     def initialize(name)
       @name = name
-    end+
+    end
 
     # Builds the project from the template rig.
     def scaffold(arguments: {}, target_dir:'.', &block)
