@@ -1,11 +1,17 @@
 require 'colsole'
 
 module Rigit::Commands
+  # The {List} module provides the {#list} command for the {CommandLine}
+  # module.
   module List
+
+    # The command line +list+ command.
     def list
       ListHandler.new(args).execute
     end
 
+    # Internal class to handle listing of available rigs for the 
+    # {CommandLine} class.
     class ListHandler
       include Colsole
 

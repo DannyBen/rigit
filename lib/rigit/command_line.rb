@@ -8,6 +8,7 @@ require 'rigit/commands/list'
 require 'rigit/commands/update'
 
 module Rigit
+  # Handles command line execution using docopt.
   class CommandLine < SuperDocopt::Base
     version VERSION
     docopt File.expand_path 'docopt.txt', __dir__
