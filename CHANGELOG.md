@@ -1,5 +1,23 @@
 # Change Log
 
+## [Unreleased](https://github.com/DannyBen/rigit/tree/HEAD)
+
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.0...HEAD)
+
+**Fixed bugs:**
+
+- Rescue template errors [\#16](https://github.com/DannyBen/rigit/issues/16)
+
+**Closed issues:**
+
+- Create a GitHub pages site [\#14](https://github.com/DannyBen/rigit/issues/14)
+- Add code documentation [\#13](https://github.com/DannyBen/rigit/issues/13)
+
+**Merged pull requests:**
+
+- Add code documentation [\#20](https://github.com/DannyBen/rigit/pull/20) ([DannyBen](https://github.com/DannyBen))
+- Rescue template errors with grace [\#18](https://github.com/DannyBen/rigit/pull/18) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.1.0](https://github.com/DannyBen/rigit/tree/v0.1.0) (2018-02-17)
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.0.3...v0.1.0)
 
