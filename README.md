@@ -61,6 +61,7 @@ $ rig
 Usage:
   rig build RIG [PARAMS...]
   rig install RIG REPO
+  rig uninstall RIG
   rig update RIG
   rig info RIG
   rig list [SUBFOLDER]
