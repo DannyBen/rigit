@@ -3,6 +3,7 @@ Rigit
 Usage:
   rig build RIG [PARAMS...]
   rig install RIG REPO
+  rig uninstall RIG
   rig update RIG
   rig info RIG
   rig list [SUBFOLDER]
@@ -18,6 +19,9 @@ Commands:
 
   install
     Clone a remote rig git repository and install it locally.
+
+  uninstall
+    Remove an installed rig.
 
   update
     Update an installed rig to its latest version.
@@ -51,6 +55,7 @@ Environment Variables:
 Examples:
   rig build gem name=mygem spec=y
   rig install example https://github.com/DannyBen/example-rig.git
+  rig uninstall example
   rig update example
   rig info example
   rig list

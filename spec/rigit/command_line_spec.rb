@@ -31,6 +31,19 @@ describe CommandLine do
     end
   end
 
+  describe 'uninstall' do
+    let(:argv) { %w[uninstall removeme] }
+    before { File.deep_write "#{Rig.home}/removeme/touchy-file", 'i am touched' }
+    after { system "rm -rf #{Rig.home}/removeme" if Dir.exist? "#{Rig.home}/removeme" }
+
+    it 'works' do
+      stdin_send('y', "\n") do
+        expect{ described_class.execute argv }.to output(/Rig uninstalled.*successfully/).to_stdout
+      end
+      expect(Dir).not_to exist "#{Rig.home}/removeme"
+    end
+  end
+
   describe 'update' do
     let(:argv) { %w[update pulled] }
     before { FileUtils.mkdir "#{Rig.home}/pulled" unless Dir.exist? "#{Rig.home}/pulled" }

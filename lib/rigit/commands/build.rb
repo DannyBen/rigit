@@ -1,5 +1,3 @@
-require 'colsole'
-
 module Rigit::Commands
   # The {Build} module provides the {#build} command for the {CommandLine}
   # module.
