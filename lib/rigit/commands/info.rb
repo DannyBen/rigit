@@ -1,5 +1,3 @@
-require 'colsole'
-
 module Rigit::Commands
   # The {Info} module provides the {#info} command for the {CommandLine}
   # module.

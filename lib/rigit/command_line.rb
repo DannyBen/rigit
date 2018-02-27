@@ -1,10 +1,14 @@
+require 'fileutils'
+require 'colsole'
 require 'super_docopt'
+
 require 'rigit/version'
 
 require 'rigit/commands/build'
 require 'rigit/commands/info'
 require 'rigit/commands/install'
 require 'rigit/commands/list'
+require 'rigit/commands/uninstall'
 require 'rigit/commands/update'
 
 module Rigit
@@ -12,10 +16,11 @@ module Rigit
   class CommandLine < SuperDocopt::Base
     version VERSION
     docopt File.expand_path 'docopt.txt', __dir__
-    subcommands [:build, :install, :update, :info, :list]
+    subcommands [:build, :install, :uninstall, :update, :info, :list]
 
     include Commands::Build
     include Commands::Install
+    include Commands::Uninstall
     include Commands::Update
     include Commands::Info
     include Commands::List

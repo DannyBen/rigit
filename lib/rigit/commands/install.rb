@@ -1,6 +1,3 @@
-require 'fileutils'
-require 'colsole'
-
 module Rigit::Commands
   # The {Install} module provides the {#install} command for the 
   # {CommandLine} module.
@@ -40,7 +37,7 @@ module Rigit::Commands
           say "  !txtpur!rig build #{rig_name}\n"
         else
           # :nocov:
-          say "!txtred!Installation failed"
+          say "!txtred!Install failed"
           # :nocov:
         end
 

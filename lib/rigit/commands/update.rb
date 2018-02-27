@@ -1,5 +1,3 @@
-require 'colsole'
-
 module Rigit::Commands
   module Update
     def update

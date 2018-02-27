@@ -1,5 +1,3 @@
-require 'colsole'
-
 module Rigit::Commands
   # The {List} module provides the {#list} command for the {CommandLine}
   # module.
