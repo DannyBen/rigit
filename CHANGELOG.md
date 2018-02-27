@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.0...HEAD)
 
+**Implemented enhancements:**
+
+- Add rig uninstall command [\#4](https://github.com/DannyBen/rigit/issues/4)
+
 **Fixed bugs:**
 
 - Rescue template errors [\#16](https://github.com/DannyBen/rigit/issues/16)
@@ -15,6 +19,7 @@
 
 **Merged pull requests:**
 
+- Add rig uninstall command [\#22](https://github.com/DannyBen/rigit/pull/22) ([DannyBen](https://github.com/DannyBen))
 - Add code documentation [\#20](https://github.com/DannyBen/rigit/pull/20) ([DannyBen](https://github.com/DannyBen))
 - Rescue template errors with grace [\#18](https://github.com/DannyBen/rigit/pull/18) ([DannyBen](https://github.com/DannyBen))
 
