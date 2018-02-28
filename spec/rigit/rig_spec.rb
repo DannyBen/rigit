@@ -130,7 +130,7 @@ describe Rig do
     subject { described_class.new 'full' }
 
     it 'returns the config object' do
-      expect(subject.config.intro).to eq 'If you rig it, they will come'
+      expect(subject.config.intro).to eq "If you !txtylw!rig!txtrst! it, !txtgrn!they will come"
     end
   end
 

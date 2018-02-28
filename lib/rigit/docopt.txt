@@ -1,7 +1,7 @@
 Rigit
 
 Usage:
-  rig build RIG [PARAMS...]
+  rig build RIG [--force] [PARAMS...]
   rig install RIG REPO
   rig uninstall RIG
   rig update RIG
@@ -48,9 +48,19 @@ Parameters:
   SUBFOLDER
     A folder inside your rigs directory.
 
+Options:
+  -f --force
+    Overwrite existing files without prompting.
+
+  -h --help
+    Show this screen.
+
+  --version
+    Show version number.
+
 Environment Variables:
   RIG_HOME
-    The path where your local rigs are installed (default: ~/.rigs)
+    The path where your local rigs are installed (default: ~/.rigs).
 
 Examples:
   rig build gem name=mygem spec=y

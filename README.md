@@ -28,7 +28,9 @@ Table of Contents
     * [Directory Structure](#directory-structure)
     * [Dynamic Tokens](#dynamic-tokens)
     * [Config File](#config-file)
-
+        * [`intro`](#intro)
+        * [`outro`](#outro)
+        * [`params`](#params)
 
 
 Installation
@@ -59,7 +61,7 @@ Usage
 ```
 $ rig
 Usage:
-  rig build RIG [PARAMS...]
+  rig build RIG [--force] [PARAMS...]
   rig install RIG REPO
   rig uninstall RIG
   rig update RIG
@@ -201,6 +203,8 @@ A typical config file looks like this:
 ```yaml
 intro: A sample generator
 
+outro: Something to say after scaffolding is done
+
 params:
   name:
     prompt: "Name your project:"
@@ -218,14 +222,33 @@ params:
     list: [irb, pry]
 ```
 
-| Key      | Purpose                                                 |
-|----------|---------------------------------------------------------|
-| `intro`  | A short message to display when building (Optional)     |
-| `params` | A list of parameters required by the rig                |
+#### `intro`
 
-The `params` key should start with the name of the variable (`name`, 
-`spec` and `console` in the above example), and contain the below 
-specifications:
+A short optional message to display before building. 
+
+This string is displayed using the [Colsole][colsole] gem, so
+you can use [color markers][colsole-colors]
+
+Example: `intro: Welcome to my blue !txtblu!rig!txtrst!`
+
+
+#### `outro`
+
+A short optional message to display after building.
+
+This string is displayed using the [Colsole][colsole] gem, so
+you can use [color markers][colsole-colors]
+
+Example: `outro: "!txtgrn!Thank you!txtrst!\nGoodbye."`
+
+
+#### `params`
+
+A list of parameters required by the rig.
+
+Each definition in the `params` key should start with the name of the 
+variable (`name`, `spec` and `console` in the above example), and contain 
+the below specifications:
 
 | Key       | Purpose                                                  |
 |-----------|----------------------------------------------------------|
@@ -237,3 +260,6 @@ specifications:
 ---
 
 [example-rig]: https://github.com/DannyBen/example-rig
+[colsole-colors]: https://github.com/dannyben/colsole#color-codes
+[colsole]: https://github.com/dannyben/colsole
+

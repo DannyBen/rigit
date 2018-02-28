@@ -37,7 +37,7 @@ describe Commands::Build::BuildHandler do
 
       it "does not ask for user input and copies the files" do
         Dir.chdir workdir do
-          expect{ subject.execute }.to output(/Building.*full.*If you rig it, they will come.*Done/m).to_stdout
+          expect{ subject.execute }.to output_fixture('cli/build-full')
           expect(ls).to match_fixture 'ls/full2'
         end
       end
@@ -95,6 +95,18 @@ describe Commands::Build::BuildHandler do
         end
       end
 
+      context "when --force is provided" do
+        let(:args) {{ 'RIG' => 'minimal', '--force' => true, 'PARAMS' => [] }}
+
+        it "does not ask if the user wants to overwrite" do
+          Dir.chdir workdir do
+            stdin_send('y') do
+              expect{ subject.execute }.not_to output(/Overwrite/).to_stdout
+            end
+          end
+        end
+      end
+
       context "when the user answers no" do
         it "keeps the old content" do
           Dir.chdir workdir do
@@ -105,7 +117,6 @@ describe Commands::Build::BuildHandler do
           end
         end
       end
-
 
       context "when the user answers yes" do
         it "copies the file content" do
