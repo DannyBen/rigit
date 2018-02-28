@@ -1,5 +1,16 @@
 # Change Log
 
+## [v0.1.2](https://github.com/DannyBen/rigit/tree/v0.1.2) (2018-02-28)
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.1...v0.1.2)
+
+**Implemented enhancements:**
+
+- Add --force to run build [\#23](https://github.com/DannyBen/rigit/issues/23)
+
+**Merged pull requests:**
+
+- Add --force and outro config [\#24](https://github.com/DannyBen/rigit/pull/24) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.1.1](https://github.com/DannyBen/rigit/tree/v0.1.1) (2018-02-27)
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.0...v0.1.1)
 
