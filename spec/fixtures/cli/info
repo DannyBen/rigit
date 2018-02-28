@@ -1,0 +1,32 @@
+[0;32mname[0m:
+  full
+
+[0;32mpath[0m:
+  /vagrant/gems/rigit/spec/rigs/full
+
+[0;32mconfig[0m:
+  intro: "If you [0;33mrig[0m it, [0;32mthey will come"
+  
+  outro: "Thank you for scaffolding, goodbye."
+  
+  params:
+    name:
+      prompt: "Name your project:"
+      type: text
+      default: project
+  
+    spec: 
+      prompt: Include RSpec files?
+      type: yesno
+      default: y
+  
+    console:
+      prompt: "Select console:"
+      type: select
+      list: [irb, pry]
+  
+    license: 
+      prompt: "Name of license file:"
+      type: text
+      default: MIT
+[0m

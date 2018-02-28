@@ -1,5 +1,5 @@
 Usage:
-  rig build RIG [PARAMS...]
+  rig build RIG [--force] [PARAMS...]
   rig install RIG REPO
   rig uninstall RIG
   rig update RIG

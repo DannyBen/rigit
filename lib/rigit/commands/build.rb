@@ -10,29 +10,30 @@ module Rigit::Commands
 
     # Internal class to handle scaffolding for the {CommandLine} class.
     class BuildHandler
-      attr_reader :args, :rig_name, :target_dir
+      attr_reader :args, :rig_name, :target_dir, :force
 
       include Colsole
 
       def initialize(args)
         @args = args
         @rig_name = args['RIG']
+        @force = args['--force']
         @target_dir = '.'
       end
 
       def execute
         say "Building !txtgrn!#{rig_name}"
-        say "!txtblu!#{config.intro}" if config.has_key? :intro
+        say config.intro if config.has_key? :intro
         verify_dirs
         arguments = prompt.get_input params
         rig.scaffold arguments:arguments, target_dir: target_dir do |file|
-          if File.exist? file
+          if File.exist? file and !force
             tty_prompt.yes? "Overwrite #{file}?", default: false
           else
             true
           end
         end
-        say "Done"
+        say config.has_key?(:outro) ? config.outro : "Done"
       end
 
       private
