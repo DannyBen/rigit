@@ -72,7 +72,8 @@ module Rigit
     private
 
     def scaffold_dir(dir:, arguments:, target_dir:)
-      files = Dir["#{dir}/**/*"].reject { |file| File.directory? file }
+      files = Dir.glob("#{dir}/**/*", File::FNM_DOTMATCH) - %w[. ..]
+      files.reject! { |file| File.directory? file }
 
       files.each do |file|
         target_file = (file % arguments).sub dir, target_dir
