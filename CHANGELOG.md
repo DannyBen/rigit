@@ -1,5 +1,16 @@
 # Change Log
 
+## [v0.1.3](https://github.com/DannyBen/rigit/tree/v0.1.3) (2018-03-01)
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.2...v0.1.3)
+
+**Fixed bugs:**
+
+- Dot files and folders are not copied [\#25](https://github.com/DannyBen/rigit/issues/25)
+
+**Merged pull requests:**
+
+- Fix copying of dotfiles and folders [\#26](https://github.com/DannyBen/rigit/pull/26) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.1.2](https://github.com/DannyBen/rigit/tree/v0.1.2) (2018-02-28)
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.1...v0.1.2)
 
