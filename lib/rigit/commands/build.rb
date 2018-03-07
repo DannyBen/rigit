@@ -11,6 +11,7 @@ module Rigit::Commands
     # Internal class to handle scaffolding for the {CommandLine} class.
     class BuildHandler
       attr_reader :args, :rig_name, :target_dir, :force
+      attr_accessor :overwrite_all, :skip_all
 
       include Colsole
 
@@ -26,17 +27,37 @@ module Rigit::Commands
         say config.intro if config.has_key? :intro
         verify_dirs
         arguments = prompt.get_input params
-        rig.scaffold arguments:arguments, target_dir: target_dir do |file|
-          if File.exist? file and !force
-            tty_prompt.yes? "Overwrite #{file}?", default: false
-          else
-            true
-          end
-        end
+
+        scaffold arguments
+
         say config.has_key?(:outro) ? config.outro : "Done"
       end
 
       private
+
+      def scaffold(arguments)
+        rig.scaffold arguments: arguments, target_dir: target_dir do |file|
+          if overwrite_all or force
+            true
+          elsif skip_all
+            false
+          elsif File.exist? file
+            prompt_user_to_overwrite file
+          else
+            true
+          end
+        end
+      end
+
+      def prompt_user_to_overwrite(file)
+        say "File !txtgrn!#{file}!txtrst! already exists."
+        tty_prompt.expand "Overwrite?" do |menu|
+          menu.choice key: 'y', name: 'overwrite',     value: true
+          menu.choice key: 'n', name: 'skip',          value: false
+          menu.choice key: 'a', name: 'overwrite all'  do @overwrite_all = true; true end
+          menu.choice key: 's', name: 'skip all'       do @skip_all = true; false end
+        end
+      end
 
       def rig
         @rig ||= Rigit::Rig.new rig_name
