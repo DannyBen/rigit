@@ -52,20 +52,11 @@ module Rigit::Commands
       def prompt_user_to_overwrite(file)
         say "File !txtgrn!#{file}!txtrst! already exists."
         tty_prompt.expand "Overwrite?" do |menu|
-          menu.choice key: 'y', name: 'overwrite',     value: :y
-          menu.choice key: 'n', name: 'skip',          value: :n
+          menu.choice key: 'y', name: 'overwrite',     value: true
+          menu.choice key: 'n', name: 'skip',          value: false
           menu.choice key: 'a', name: 'overwrite all'  do @overwrite_all = true; true end
           menu.choice key: 's', name: 'skip all'       do @skip_all = true; false end
         end
-      end
-
-      def overwrite_options(file)
-        {
-          "Overwrite #{file}" => :y,
-          "Skip #{file}" => :n,
-          "Overwrite all" => :ya,
-          "Skip all" => :na
-        }
       end
 
       def rig

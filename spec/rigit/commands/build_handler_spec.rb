@@ -90,7 +90,7 @@ describe Commands::Build::BuildHandler do
       it "asks if the user wants to ovrewrite" do
         Dir.chdir workdir do
           stdin_send('y', 'n') do
-            expect{ subject.execute }.to output(/Overwrite .\/some-file.txt\?.*No/).to_stdout
+            expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\nOverwrite\?.*skip/m).to_stdout
           end
         end
       end
@@ -111,7 +111,7 @@ describe Commands::Build::BuildHandler do
         it "keeps the old content" do
           Dir.chdir workdir do
             stdin_send('y', 'n') do
-              expect{ subject.execute }.to output(/Overwrite .\/some-file.txt\?.*No/).to_stdout
+              expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\nOverwrite\?.*skip/m).to_stdout
             end
             expect(File.read 'some-file.txt').to eq 'OLD CONTENT'
           end
@@ -122,12 +122,35 @@ describe Commands::Build::BuildHandler do
         it "copies the file content" do
           Dir.chdir workdir do
             stdin_send('y', 'y') do
-              expect{ subject.execute }.to output(/Overwrite .\/some-file.txt\?.*yes/).to_stdout
+              expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\nOverwrite\?.*overwrite/m).to_stdout
             end
             expect(File.read 'some-file.txt').to eq 'static content'
           end
         end
       end
+
+      context "when the user answers skip all" do
+        it "keeps the old content" do
+          Dir.chdir workdir do
+            stdin_send('y', 's') do
+              expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\nOverwrite\?.*skip all/m).to_stdout
+            end
+            expect(File.read 'some-file.txt').to eq 'OLD CONTENT'
+          end
+        end
+      end
+
+      context "when the user answers overwrite all" do
+        it "copies the file content" do
+          Dir.chdir workdir do
+            stdin_send('y', 'a') do
+              expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\nOverwrite\?.*overwrite all/m).to_stdout
+            end
+            expect(File.read 'some-file.txt').to eq 'static content'
+          end
+        end
+      end
+
     end
 
     context "when the source dir does not exist" do
