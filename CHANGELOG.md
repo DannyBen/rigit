@@ -1,5 +1,17 @@
 # Change Log
 
+## [Unreleased](https://github.com/DannyBen/rigit/tree/HEAD)
+
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.3...HEAD)
+
+**Implemented enhancements:**
+
+- Change overwrite file prompt to allow yes/no to all [\#27](https://github.com/DannyBen/rigit/issues/27)
+
+**Merged pull requests:**
+
+- Add yes/no/all/skip all to Overwrite prompt [\#29](https://github.com/DannyBen/rigit/pull/29) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.1.3](https://github.com/DannyBen/rigit/tree/v0.1.3) (2018-03-01)
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.2...v0.1.3)
 
