@@ -1,12 +1,16 @@
 # Change Log
 
-## [Unreleased](https://github.com/DannyBen/rigit/tree/HEAD)
-
-[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.3...HEAD)
+## [v0.1.4](https://github.com/DannyBen/rigit/tree/v0.1.4) (2018-03-08)
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.3...v0.1.4)
 
 **Implemented enhancements:**
 
+- Disable "overwrite" prompt when overwriting internally [\#30](https://github.com/DannyBen/rigit/issues/30)
 - Change overwrite file prompt to allow yes/no to all [\#27](https://github.com/DannyBen/rigit/issues/27)
+
+**Fixed bugs:**
+
+- spec=y should be spec=yes [\#31](https://github.com/DannyBen/rigit/issues/31)
 
 **Merged pull requests:**
 
