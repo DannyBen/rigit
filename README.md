@@ -129,7 +129,7 @@ Most rigs will have parameters, you will be prompted to input them as needed.
 You can also provide some (or all) of the parameters in the command line, 
 if you need to avoid interactivity.
 
-    $ rig build example name=myapp spec=y console=irb license=MIT
+    $ rig build example name=myapp spec=yes console=irb license=MIT
 
 To learn about the parameters of a rig:
 
