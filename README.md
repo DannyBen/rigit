@@ -214,7 +214,7 @@ params:
   spec: 
     prompt: Include RSpec files?
     type: yesno
-    default: y
+    default: yes
 
   console:
     prompt: "Select console:"
@@ -254,7 +254,7 @@ the below specifications:
 |-----------|----------------------------------------------------------|
 | `prompt`  | The text to display when asking for user input           |
 | `type`    | The variable tyoe. Can be `yesno`, `text` or `select`    |
-| `default` | The default value. When using `yesno`, use `y` and `n`   |
+| `default` | The default value. When using `yesno`, use `yes` or `no` |
 | `list`    | An array of allowed options (only used in `select` type) |
 
 ---

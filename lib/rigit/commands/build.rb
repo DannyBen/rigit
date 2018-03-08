@@ -35,18 +35,36 @@ module Rigit::Commands
 
       private
 
+      # Call Rig#scaffold while checking each file to see if it should be
+      # overwritten or not.
       def scaffold(arguments)
         rig.scaffold arguments: arguments, target_dir: target_dir do |file|
-          if overwrite_all or force
-            true
-          elsif skip_all
-            false
+          overwrite_file? file
+        end
+      end
+
+      # Check various scenarios to decide if the file should be overwritten
+      # or not. These are the scenarios covered by this method:
+      # 1. The user provided +--focce+ in the command line
+      # 2. The user answered "overwrite all" or "skip all" when he asked 
+      #    about the first conflicting file.
+      # 3. In cases where an additive dir contains a file that was originally
+      #    new, approved or rejected - we use this existing knowledge (which
+      #    is stored in +response_log+.
+      def overwrite_file?(file)
+        return response_log[file] if response_log.has_key? file
+
+        response_log[file] = true
+
+        unless overwrite_all or force
+          if skip_all
+            response_log[file] = false
           elsif File.exist? file
-            prompt_user_to_overwrite file
-          else
-            true
+            response_log[file] = prompt_user_to_overwrite file
           end
         end
+
+        response_log[file]
       end
 
       def prompt_user_to_overwrite(file)
@@ -57,6 +75,10 @@ module Rigit::Commands
           menu.choice key: 'a', name: 'overwrite all'  do @overwrite_all = true; true end
           menu.choice key: 's', name: 'skip all'       do @skip_all = true; false end
         end
+      end
+
+      def response_log
+        @response_log ||= {}
       end
 
       def rig

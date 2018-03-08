@@ -44,7 +44,7 @@ describe Rig do
     end
 
     context 'with full example' do
-      let(:arguments) {{ name: 'myapp', license: 'MIT', spec: 'y', console: 'irb' }}
+      let(:arguments) {{ name: 'myapp', license: 'MIT', spec: 'yes', console: 'irb' }}
       subject { described_class.new 'full' }
 
       it 'copies all files and folders' do
@@ -58,7 +58,7 @@ describe Rig do
         Dir.chdir workdir do
           subject.scaffold arguments: arguments
           files = Dir['**/*.*']
-          expect(files.count).to eq 6
+          expect(files.count).to eq 7
           
           files.each do |file|
             fixture_name = "content/#{File.basename(file)}"

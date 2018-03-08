@@ -1,1 +1,1 @@
-["MIT.license", "bin", "bin/irb.console", "myapp-runner.txt", "somefile.txt", "spec", "spec/some-spec-file.txt", "subfolder", "subfolder/myapp-deep-file.txt"]
+["MIT.license", "bin", "bin/irb.console", "file-that-may-be-overwritten.txt", "myapp-runner.txt", "somefile.txt", "spec", "spec/some-spec-file.txt", "subfolder", "subfolder/myapp-deep-file.txt"]
