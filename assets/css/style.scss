@@ -7,7 +7,9 @@
   color: #fff;
   text-align: center;
   background-color: #333;
-  background-image: none;
+  background-image: url('../img/scaffold.jpg');
+  background-size: cover;
+  background-position: center;
 
   h1 {
     text-transform: uppercase;
