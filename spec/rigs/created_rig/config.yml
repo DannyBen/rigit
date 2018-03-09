@@ -1,0 +1,21 @@
+intro: Optional intro message
+
+outro: Optional outro message
+
+params:
+  name:
+    prompt: "Name your project:"
+    type: text
+    default: project
+
+  # More parameter examples
+
+  # spec: 
+  #   prompt: Include RSpec files?
+  #   type: yesno
+  #   default: yes
+
+  # console:
+  #   prompt: "Select console:"
+  #   type: select
+  #   list: [irb, pry]

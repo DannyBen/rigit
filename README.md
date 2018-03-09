@@ -61,6 +61,7 @@ Usage
 ```
 $ rig
 Usage:
+  rig new NAME
   rig build RIG [--force] [PARAMS...]
   rig install RIG REPO
   rig uninstall RIG
@@ -158,6 +159,10 @@ The steps in creating a rig are:
    only include a license file if the user wants to), you move the files to
    a folder with s special `parameter=value` folder.
 5. Create a config file to specify the needed parameters.
+
+In order to quickly get started with creating a new rig, you can also run 
+`rig new your_new_rig_name`. This will create the initial folder structure
+and an initial `config.yml` for you to build on.
 
 
 ### Directory Structure
