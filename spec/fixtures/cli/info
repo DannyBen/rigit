@@ -9,6 +9,13 @@
   
   outro: "Thank you for scaffolding, goodbye."
   
+  before: 
+    "Before Command 1": 'echo "Selected console is: %{console}"'
+    "Before Command 2 %{spec}": 'echo "Spec answer was: %{spec}"'
+  
+  after: 
+    "After Command 1": 'echo "after command 1'
+  
   params:
     name:
       prompt: "Name your project:"
@@ -18,7 +25,7 @@
     spec: 
       prompt: Include RSpec files?
       type: yesno
-      default: y
+      default: yes
   
     console:
       prompt: "Select console:"

@@ -33,7 +33,7 @@ describe Commands::Build::BuildHandler do
     end
 
     context "when params are provided in the command" do
-      let(:args) {{ 'RIG' => 'full', 'PARAMS' => %w[name=hello spec=n console=irb license=MIT] }}
+      let(:args) {{ 'RIG' => 'full', 'PARAMS' => %w[name=hello spec=no console=irb license=MIT] }}
 
       it "does not ask for user input and copies the files" do
         Dir.chdir workdir do

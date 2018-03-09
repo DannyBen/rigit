@@ -38,9 +38,21 @@ module Rigit::Commands
       # Call Rig#scaffold while checking each file to see if it should be
       # overwritten or not.
       def scaffold(arguments)
+        execute_actions config.before, arguments if config.has_key? :before
+        
         rig.scaffold arguments: arguments, target_dir: target_dir do |file|
           overwrite_file? file
         end
+
+        execute_actions config.after, arguments if config.has_key? :after
+      end
+
+      def execute_actions(actions, arguments)
+        actions.each do |label, command|
+          say "\n!txtgrn!#{label}" % arguments
+          system command % arguments
+        end
+        say "" unless actions.empty?
       end
 
       # Check various scenarios to decide if the file should be overwritten
@@ -68,7 +80,7 @@ module Rigit::Commands
       end
 
       def prompt_user_to_overwrite(file)
-        say "File !txtgrn!#{file}!txtrst! already exists."
+        say "\nFile !txtgrn!#{file}!txtrst! already exists."
         tty_prompt.expand "Overwrite?" do |menu|
           menu.choice key: 'y', name: 'overwrite',     value: true
           menu.choice key: 'n', name: 'skip',          value: false

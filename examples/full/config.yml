@@ -1,7 +1,19 @@
+# Optional intro message
 intro: "If you !txtylw!rig!txtrst! it, !txtgrn!they will come"
 
+# Optional outro message
 outro: "Thank you for scaffolding, goodbye."
 
+# Optional actions to run before building (label: command)
+before: 
+  "Command 1": 'echo "Selected console is: %{console}"'
+  "Show current directory": 'pwd'
+
+# Optional actions to run after building (label: command)
+after: 
+  "Initialize git repository": git status
+
+# User input parameters
 params:
   name:
     prompt: "Name your project:"
