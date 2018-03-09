@@ -28,9 +28,10 @@ Table of Contents
     * [Directory Structure](#directory-structure)
     * [Dynamic Tokens](#dynamic-tokens)
     * [Config File](#config-file)
-        * [`intro`](#intro)
-        * [`outro`](#outro)
-        * [`params`](#params)
+        * [Example Config](#example-config)
+        * [Showing messages before/after scaffolding](#showing-messages-beforeafter-scaffolding)
+        * [Executing commands before/after scaffolding](#executing-commands-beforeafter-scaffolding)
+        * [Scaffolding parameters](#scaffolding-parameters)
 
 
 Installation
@@ -203,13 +204,25 @@ Tokens are specified using this syntax:
 Place a `config.yml` file at the root of your rig template. A config file
 is optional for rigs that do not have any variables.
 
-A typical config file looks like this:
+
+#### Example Config
+
+The below config file example contains all the available options:
 
 ```yaml
+# Optional messages to show before/after scaffolding
 intro: A sample generator
-
 outro: Something to say after scaffolding is done
 
+# Optional commands to execute before/after scaffolding
+before:
+  "Create empty .env file": "touch .env"
+
+after:
+  "Install Dependencies": "bundle install"
+  "Initialize git repo": "git init"
+
+# Parameters to collect on scaffolding
 params:
   name:
     prompt: "Name your project:"
@@ -227,29 +240,43 @@ params:
     list: [irb, pry]
 ```
 
-#### `intro`
+#### Showing messages before/after scaffolding
 
-A short optional message to display before building. 
+Use the `intro` and `outro` options to show short message that will be
+displayed before or after building. Both are optional.
 
-This string is displayed using the [Colsole][colsole] gem, so
+The message is displayed using the [Colsole][colsole] gem, so
 you can use [color markers][colsole-colors]
 
-Example: `intro: Welcome to my blue !txtblu!rig!txtrst!`
+Example:
 
+```yaml
+intro: Welcome to my blue !txtblu!rig!txtrst!`
+outro: Installation completed successfully
+```
 
-#### `outro`
+#### Executing commands before/after scaffolding
 
-A short optional message to display after building.
+Use the `before` and `after` options to specify one or more commands to
+run before or after building. Each command has a label and an action, and 
+both support parameter interpolation (`%{param_name}`), so you can use 
+the input the user provided in your commands.
 
-This string is displayed using the [Colsole][colsole] gem, so
-you can use [color markers][colsole-colors]
+Example:
 
-Example: `outro: "!txtgrn!Thank you!txtrst!\nGoodbye."`
+```
+before:
+  "Create empty .env file": "touch .env"
 
+after:
+  "Install Dependencies": "bundle install"
+  "Initialize git repo": "git init"
+  "Run setup script": "myscript %{name}"
+```
 
-#### `params`
+#### Scaffolding parameters
 
-A list of parameters required by the rig.
+The `params` option contains a list of parameters required by the rig.
 
 Each definition in the `params` key should start with the name of the 
 variable (`name`, `spec` and `console` in the above example), and contain 
@@ -261,6 +288,16 @@ the below specifications:
 | `type`    | The variable tyoe. Can be `yesno`, `text` or `select`    |
 | `default` | The default value. When using `yesno`, use `yes` or `no` |
 | `list`    | An array of allowed options (only used in `select` type) |
+
+Example:
+
+```yaml
+params:
+  name:
+    prompt: "Name your project:"
+    type: text
+    default: project
+```
 
 ---
 
