@@ -1,15 +1,16 @@
 # Change Log
 
-## [Unreleased](https://github.com/DannyBen/rigit/tree/HEAD)
-
-[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.4...HEAD)
+## [v0.1.5](https://github.com/DannyBen/rigit/tree/v0.1.5) (2018-03-09)
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.4...v0.1.5)
 
 **Implemented enhancements:**
 
 - Add rig new command [\#21](https://github.com/DannyBen/rigit/issues/21)
+- Add "post\_run" actions [\#19](https://github.com/DannyBen/rigit/issues/19)
 
 **Merged pull requests:**
 
+- Add before/after actions [\#34](https://github.com/DannyBen/rigit/pull/34) ([DannyBen](https://github.com/DannyBen))
 - Add "rig new NAME" command [\#33](https://github.com/DannyBen/rigit/pull/33) ([DannyBen](https://github.com/DannyBen))
 
 ## [v0.1.4](https://github.com/DannyBen/rigit/tree/v0.1.4) (2018-03-08)
