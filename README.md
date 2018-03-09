@@ -264,7 +264,7 @@ the input the user provided in your commands.
 
 Example:
 
-```
+```yaml
 before:
   "Create empty .env file": "touch .env"
 
