@@ -49,10 +49,9 @@ module Rigit::Commands
 
       def execute_actions(actions, arguments)
         actions.each do |label, command|
-          say "\n!txtgrn!#{label}" % arguments
+          say "!txtgrn!#{label}" % arguments
           system command % arguments
         end
-        say "" unless actions.empty?
       end
 
       # Check various scenarios to decide if the file should be overwritten
@@ -80,8 +79,8 @@ module Rigit::Commands
       end
 
       def prompt_user_to_overwrite(file)
-        say "\nFile !txtgrn!#{file}!txtrst! already exists."
-        tty_prompt.expand "Overwrite?" do |menu|
+        say "File !txtgrn!#{file}!txtrst! already exists."
+        tty_prompt.expand "  Overwrite?" do |menu|
           menu.choice key: 'y', name: 'overwrite',     value: true
           menu.choice key: 'n', name: 'skip',          value: false
           menu.choice key: 'a', name: 'overwrite all'  do @overwrite_all = true; true end
