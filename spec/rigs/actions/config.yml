@@ -1,0 +1,12 @@
+before: 
+  "Before Command 1": 'touch tmp-command1-%{name}'
+  "Before Command 2 %{name}": 'touch tmp-command2'
+
+after: 
+  "After Command 3": 'touch tmp-command3'
+
+params:
+  name:
+    prompt: "Name your project:"
+    type: text
+    default: project

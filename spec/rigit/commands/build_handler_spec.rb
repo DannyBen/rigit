@@ -43,6 +43,17 @@ describe Commands::Build::BuildHandler do
       end
     end
 
+    context "when the config includes before/after actions" do
+      let(:args) {{ 'RIG' => 'actions', 'PARAMS' => %w[name=hello] }}
+
+      it "executes the commands" do
+        Dir.chdir workdir do
+          expect{ subject.execute }.to output_fixture('cli/build-actions')
+          expect(ls).to match_fixture 'ls/actions'
+        end
+      end      
+    end
+
     context "when the target dir is not empty" do
       let(:args) {{ 'RIG' => 'minimal', 'PARAMS' => [] }}
       before { File.deep_write "#{workdir}/lonely-file", 'anything' }

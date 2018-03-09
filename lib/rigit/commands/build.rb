@@ -47,6 +47,9 @@ module Rigit::Commands
         execute_actions config.after, arguments if config.has_key? :after
       end
 
+      # Execute user-defined system commands. 
+      # Actions are expected to be provided as a hash (label=command) and
+      # both labels and commands accept string interpolation +%{tokens}+
       def execute_actions(actions, arguments)
         actions.each do |label, command|
           say "!txtgrn!#{label}" % arguments
