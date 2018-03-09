@@ -198,6 +198,11 @@ Tokens are specified using this syntax:
 
     %{name}
 
+If you are using the 
+[`before` and `after`](#showing-messages-beforeafter-scaffolding) 
+definitions in your config file, you can use dynamic tokens in both the 
+label and the command of each definition.
+
 
 ### Config File
 
