@@ -1,4 +1,5 @@
 Usage:
+  rig new NAME
   rig build RIG [--force] [PARAMS...]
   rig install RIG REPO
   rig uninstall RIG

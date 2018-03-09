@@ -15,6 +15,16 @@ module Rigit
       ENV['RIG_HOME'] = path
     end
 
+    # Create a new empty rig with a basic config file as a starting point.
+    def self.create(name)
+      target_dir = "#{home}/#{name}"
+      template_file = File.expand_path 'template_config.yml', __dir__
+      
+      FileUtils.mkdir target_dir
+      FileUtils.mkdir "#{target_dir}/base"
+      FileUtils.cp template_file, "#{target_dir}/config.yml"
+    end
+
     # Returns a new instance of Rig. The +name+ argument should be the name 
     # of an existing (installed) rig.
     def initialize(name)

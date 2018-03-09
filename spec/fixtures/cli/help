@@ -1,6 +1,7 @@
 Rigit
 
 Usage:
+  rig new NAME
   rig build RIG [--force] [PARAMS...]
   rig install RIG REPO
   rig uninstall RIG
@@ -10,6 +11,9 @@ Usage:
   rig (-h|--help|--version)
 
 Commands:
+  new
+    Create a new rig template.
+
   build
     Create a new project based on one of the installed rig templates.
     This command should be executed in an empty directory.
@@ -34,6 +38,9 @@ Commands:
     of subfolders (possibly rigs) inside it.
 
 Parameters:
+  NAME
+    The name of the new rig template.
+
   RIG
     The name of the source folder (installed rig).
 
@@ -69,3 +76,4 @@ Examples:
   rig update example
   rig info example
   rig list
+  rig new myrig
