@@ -20,8 +20,7 @@ module Rigit
       target_dir = "#{home}/#{name}"
       template_file = File.expand_path 'template_config.yml', __dir__
       
-      FileUtils.mkdir target_dir
-      FileUtils.mkdir "#{target_dir}/base"
+      FileUtils.mkdir_p "#{target_dir}/base"
       FileUtils.cp template_file, "#{target_dir}/config.yml"
     end
 

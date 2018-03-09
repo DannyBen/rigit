@@ -34,7 +34,7 @@ module Rigit::Commands
 
       def verify_presence
         if rig.exist?
-          say "Rig #{name} already exists, choose a different name"
+          say "Rig !txtgrn!#{name}!txtrst! already exists, choose a different name"
           raise Rigit::Exit
         end
       end

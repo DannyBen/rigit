@@ -7,7 +7,7 @@ describe Rig do
     context 'when RIG_HOME is not set' do
       it 'returns ~/.rigs' do
         without_env 'RIG_HOME' do
-          expect(Rig.home).to eq "#{Dir.home}/.rigs"
+          expect(described_class.home).to eq "#{Dir.home}/.rigs"
         end
       end
     end
@@ -15,7 +15,7 @@ describe Rig do
     context 'when RIG_HOME is set' do
       it 'returns RIG_HOME' do
         with_env 'RIG_HOME', 'some/path' do
-          expect(Rig.home).to eq "some/path"
+          expect(described_class.home).to eq "some/path"
         end
       end
     end
@@ -24,9 +24,22 @@ describe Rig do
   describe '::home=' do
     it 'sets Rig.home' do
       without_env 'RIG_HOME' do
-        Rig.home = 'some/new/path'
-        expect(Rig.home).to eq 'some/new/path'
+        described_class.home = 'some/new/path'
+        expect(described_class.home).to eq 'some/new/path'
       end      
+    end
+  end
+
+  describe '::create' do
+    before { system "rm -rf #{Rig.home}/created_rig" if Dir.exist? "#{Rig.home}/created_rig" }
+
+    it "creates a new rig template" do
+      expect(Dir).not_to exist("#{Rig.home}/created_rig")
+
+      described_class.create 'created_rig'
+
+      expect(File).to exist("#{Rig.home}/created_rig/config.yml")
+      expect(Dir).to exist("#{Rig.home}/created_rig/base")
     end
   end
 
