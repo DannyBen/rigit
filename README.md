@@ -259,8 +259,8 @@ outro: Installation completed successfully
 
 Use the `before` and `after` options to specify one or more commands to
 run before or after building. Each command has a label and an action, and 
-both support parameter interpolation (`%{param_name}`), so you can use 
-the input the user provided in your commands.
+both support [dynamic tokens](#dynamic-tokens), so you can use the input the user provided in 
+your commands.
 
 Example:
 
