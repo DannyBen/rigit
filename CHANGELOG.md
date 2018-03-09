@@ -1,5 +1,17 @@
 # Change Log
 
+## [Unreleased](https://github.com/DannyBen/rigit/tree/HEAD)
+
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.4...HEAD)
+
+**Implemented enhancements:**
+
+- Add rig new command [\#21](https://github.com/DannyBen/rigit/issues/21)
+
+**Merged pull requests:**
+
+- Add "rig new NAME" command [\#33](https://github.com/DannyBen/rigit/pull/33) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.1.4](https://github.com/DannyBen/rigit/tree/v0.1.4) (2018-03-08)
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.3...v0.1.4)
 
