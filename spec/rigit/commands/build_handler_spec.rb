@@ -33,7 +33,7 @@ describe Commands::Build::BuildHandler do
     end
 
     context "when params are provided in the command" do
-      let(:args) {{ 'RIG' => 'full', 'PARAMS' => %w[name=hello spec=n console=irb license=MIT] }}
+      let(:args) {{ 'RIG' => 'full', 'PARAMS' => %w[name=hello spec=no console=irb license=MIT] }}
 
       it "does not ask for user input and copies the files" do
         Dir.chdir workdir do
@@ -41,6 +41,17 @@ describe Commands::Build::BuildHandler do
           expect(ls).to match_fixture 'ls/full2'
         end
       end
+    end
+
+    context "when the config includes before/after actions" do
+      let(:args) {{ 'RIG' => 'actions', 'PARAMS' => %w[name=hello] }}
+
+      it "executes the commands" do
+        Dir.chdir workdir do
+          expect{ subject.execute }.to output_fixture('cli/build-actions')
+          expect(ls).to match_fixture 'ls/actions'
+        end
+      end      
     end
 
     context "when the target dir is not empty" do
@@ -90,7 +101,7 @@ describe Commands::Build::BuildHandler do
       it "asks if the user wants to ovrewrite" do
         Dir.chdir workdir do
           stdin_send('y', 'n') do
-            expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\nOverwrite\?.*skip/m).to_stdout
+            expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\n\s*Overwrite\?.*skip/m).to_stdout
           end
         end
       end
@@ -111,7 +122,7 @@ describe Commands::Build::BuildHandler do
         it "keeps the old content" do
           Dir.chdir workdir do
             stdin_send('y', 'n') do
-              expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\nOverwrite\?.*skip/m).to_stdout
+              expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\n\s*Overwrite\?.*skip/m).to_stdout
             end
             expect(File.read 'some-file.txt').to eq 'OLD CONTENT'
           end
@@ -122,7 +133,7 @@ describe Commands::Build::BuildHandler do
         it "copies the file content" do
           Dir.chdir workdir do
             stdin_send('y', 'y') do
-              expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\nOverwrite\?.*overwrite/m).to_stdout
+              expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\n\s*Overwrite\?.*overwrite/m).to_stdout
             end
             expect(File.read 'some-file.txt').to eq 'static content'
           end
@@ -133,7 +144,7 @@ describe Commands::Build::BuildHandler do
         it "keeps the old content" do
           Dir.chdir workdir do
             stdin_send('y', 's') do
-              expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\nOverwrite\?.*skip all/m).to_stdout
+              expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\n\s*Overwrite\?.*skip all/m).to_stdout
             end
             expect(File.read 'some-file.txt').to eq 'OLD CONTENT'
           end
@@ -144,7 +155,7 @@ describe Commands::Build::BuildHandler do
         it "copies the file content" do
           Dir.chdir workdir do
             stdin_send('y', 'a') do
-              expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\nOverwrite\?.*overwrite all/m).to_stdout
+              expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\n\s*Overwrite\?.*overwrite all/m).to_stdout
             end
             expect(File.read 'some-file.txt').to eq 'static content'
           end
