@@ -1,0 +1,11 @@
+params:
+  bin:
+    prompt: "Include bin?"
+    type: yesno
+    default: yes
+
+  binfile:
+    prompt: "Name of the bin file:"
+    type: text
+    default: recycle_bin
+    condition: bin=yes

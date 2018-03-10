@@ -28,11 +28,11 @@ Table of Contents
     * [Directory Structure](#directory-structure)
     * [Dynamic Tokens](#dynamic-tokens)
     * [Config File](#config-file)
-        * [Example Config](#example-config)
+        * [Example config](#example-config)
         * [Showing messages before/after scaffolding](#showing-messages-beforeafter-scaffolding)
         * [Executing commands before/after scaffolding](#executing-commands-beforeafter-scaffolding)
         * [Scaffolding parameters](#scaffolding-parameters)
-
+        * [Conditional parameters](#conditional-parameters)
 
 Installation
 --------------------------------------------------
@@ -210,7 +210,7 @@ Place a `config.yml` file at the root of your rig template. A config file
 is optional for rigs that do not have any variables.
 
 
-#### Example Config
+#### Example config
 
 The below config file example contains all the available options:
 
@@ -234,15 +234,16 @@ params:
     type: text
     default: project
 
-  spec: 
-    prompt: Include RSpec files?
+  console: 
+    prompt: Include interactive console?
     type: yesno
     default: yes
 
-  console:
+  console_type:
     prompt: "Select console:"
     type: select
     list: [irb, pry]
+    condition: console=yes
 ```
 
 #### Showing messages before/after scaffolding
@@ -284,15 +285,16 @@ after:
 The `params` option contains a list of parameters required by the rig.
 
 Each definition in the `params` key should start with the name of the 
-variable (`name`, `spec` and `console` in the above example), and contain 
-the below specifications:
+variable (`name`, `console` and `console_type` in the above example), and 
+contain the below specifications:
 
-| Key       | Purpose                                                  |
-|-----------|----------------------------------------------------------|
-| `prompt`  | The text to display when asking for user input           |
-| `type`    | The variable tyoe. Can be `yesno`, `text` or `select`    |
-| `default` | The default value. When using `yesno`, use `yes` or `no` |
-| `list`    | An array of allowed options (only used in `select` type) |
+| Key         | Purpose                                                  |
+|-------------|----------------------------------------------------------|
+| `prompt`    | The text to display when asking for user input           |
+| `type`      | The variable tyoe. Can be `yesno`, `text` or `select`    |
+| `default`   | The default value. When using `yesno`, use `yes` or `no` |
+| `list`      | An array of allowed options (only used in `select` type) |
+| `condition` | Optional `key=value`. See [conditional parameters](#conditional-parameters) below |
 
 Example:
 
@@ -304,6 +306,32 @@ params:
     default: project
 ```
 
+#### Conditional parameters
+
+You can configure some of the parameters to prompt the user for input based
+on his previous input.
+
+A condition is a simple `key=value` where `key` is a name of a parameter
+that is previously defined.
+
+In the below example, the `console_type` parameter will only be requested if
+the user has responded with `yes` to the `console` question.
+
+Example:
+
+```yaml
+params:
+  console: 
+    prompt: Include interactive console?
+    type: yesno
+    default: yes
+
+  console_type:
+    prompt: "Select console:"
+    type: select
+    list: [irb, pry]
+    condition: console=yes
+```
 ---
 
 [example-rig]: https://github.com/DannyBen/example-rig
