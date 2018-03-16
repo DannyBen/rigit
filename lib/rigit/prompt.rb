@@ -6,7 +6,7 @@ module Rigit
   # from the rig config file), and asks the user for input one by one, while 
   # considering prefilled values.
   class Prompt
-    attr_reader :params
+    attr_reader :params, :input
 
     def initialize(params)
       @params = params
@@ -16,12 +16,12 @@ module Rigit
     # used for values, and skip asking the user to provide answers for the
     # ones that are prefilled.
     def get_input(prefill={})
-      result = {}
+      @input = {}
       params.each do |key, spec|
-        next if skip_by_condition? spec, result
-        result[key] = prefill.has_key?(key) ? prefill[key] : ask(spec)
+        next if skip_by_condition? spec
+        @input[key] = prefill.has_key?(key) ? prefill[key] : ask(spec)
       end
-      result
+      @input
     end
 
     private
@@ -37,15 +37,17 @@ module Rigit
         prompt.ask text, default: default
       when 'select'
         prompt.select text, param.list, marker: '>'
+      when 'ruby'
+        instance_eval param.code
       else
         raise ConfigError, "Unknown type '#{param[:type]}'"
       end
     end
 
-    def skip_by_condition?(spec, filled_values)
+    def skip_by_condition?(spec)
       return unless spec.has_key? :condition
       key, value = spec.condition.split '='
-      filled_values[key.to_sym] != value
+      input[key.to_sym] != value
     end
 
     def prompt

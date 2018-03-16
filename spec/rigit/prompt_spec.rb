@@ -42,5 +42,15 @@ describe Prompt do
         end        
       end
     end
+
+    context "with a ruby-type param" do
+      let(:params) { Config.load('spec/fixtures/prompt/ruby-type.yml').params }
+
+      it "evaluates the code" do
+        expect(subject.get_input).to eq({ name: "bob", nickname: "BOBBY" })
+      end
+    end
+
+
   end
 end

@@ -1,0 +1,10 @@
+params:
+  name:
+    type: ruby
+    code: |
+      "bob"
+
+  nickname:
+    type: ruby
+    code: |
+      "#{input[:name].upcase}BY"
