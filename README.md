@@ -245,6 +245,10 @@ params:
     type: select
     list: [irb, pry]
     condition: console=yes
+
+  uppercase_name:
+    type: ruby
+    code: input[:name].upcase
 ```
 
 
