@@ -87,7 +87,18 @@ describe Rig do
 
       it 'raises TemplateError' do
         Dir.chdir workdir do
-          expect { subject.scaffold }.to raise_error(TemplateError)
+          expect { subject.scaffold }.to raise_error(TemplateError, "malformed format string - %Q")
+        end
+      end
+    end
+
+    context 'with filenames that contain errors' do
+      let(:arguments) {{ name: 'myapp' }}
+      subject { described_class.new 'filename-error' }
+
+      it 'raises TemplateError' do
+        Dir.chdir workdir do
+          expect { subject.scaffold }.to raise_error(TemplateError, "key{no-such-key} not found")
         end
       end
     end
@@ -117,7 +128,6 @@ describe Rig do
   end
 
   describe '#has_config?' do
-
     context 'when the rig has a config file' do
       subject { described_class.new 'full'}
 

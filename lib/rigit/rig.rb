@@ -85,18 +85,23 @@ module Rigit
       files.reject! { |file| File.directory? file }
 
       files.each do |file|
-        target_file = (file % arguments).sub dir, target_dir
-
+        target_file = get_target_filename file, arguments, target_dir, dir
         next if block_given? and !yield target_file
-
-        begin
-          content = File.read(file) % arguments
-        rescue ArgumentError => e
-          raise TemplateError.new file, e.message
-        end
-        
+        content = get_file_content file, arguments
         File.deep_write target_file, content
       end
+    end
+
+    def get_target_filename(file, arguments, target_dir, source_dir)
+      (file % arguments).sub source_dir, target_dir
+    rescue KeyError => e
+      raise TemplateError.new file, e.message
+    end
+
+    def get_file_content(file, arguments)
+      File.read(file) % arguments
+    rescue ArgumentError => e
+      raise TemplateError.new file, e.message
     end
   end
 end
