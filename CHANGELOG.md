@@ -1,5 +1,16 @@
 # Change Log
 
+## [v0.1.7](https://github.com/DannyBen/rigit/tree/v0.1.7) (2018-03-16)
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.6...v0.1.7)
+
+**Implemented enhancements:**
+
+- Consider suppressing "directory not empty" warning on `--force` [\#37](https://github.com/DannyBen/rigit/issues/37)
+
+**Merged pull requests:**
+
+- Add calculated \(ruby\) params [\#39](https://github.com/DannyBen/rigit/pull/39) ([DannyBen](https://github.com/DannyBen))
+
 ## [v0.1.6](https://github.com/DannyBen/rigit/tree/v0.1.6) (2018-03-11)
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.5...v0.1.6)
 
