@@ -135,11 +135,11 @@ module Rigit::Commands
       end
 
       def verify_target_dir
-        if !Dir.empty? target_dir
-          dirstring = target_dir == '.' ? 'Current directory' : "Directory '#{target_dir}'"
-          continue = tty_prompt.yes? "#{dirstring} is not empty. Continue anyway?", default: false
-          raise Rigit::Exit, "Goodbye" unless continue
-        end
+        return if Dir.empty?(target_dir) or force
+
+        dirstring = target_dir == '.' ? 'Current directory' : "Directory '#{target_dir}'"
+        continue = tty_prompt.yes? "#{dirstring} is not empty. Continue anyway?", default: false
+        raise Rigit::Exit, "Goodbye" unless continue
       end
     end
   end

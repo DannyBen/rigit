@@ -33,6 +33,7 @@ Table of Contents
         * [Executing commands before/after scaffolding](#executing-commands-beforeafter-scaffolding)
         * [Scaffolding parameters](#scaffolding-parameters)
         * [Conditional parameters](#conditional-parameters)
+        * [Calculated parameters](#calculated-parameters)
 
 Installation
 --------------------------------------------------
@@ -244,7 +245,12 @@ params:
     type: select
     list: [irb, pry]
     condition: console=yes
+
+  uppercase_name:
+    type: ruby
+    code: input[:name].upcase
 ```
+
 
 #### Showing messages before/after scaffolding
 
@@ -260,6 +266,7 @@ Example:
 intro: Welcome to my blue !txtblu!rig!txtrst!`
 outro: Installation completed successfully
 ```
+
 
 #### Executing commands before/after scaffolding
 
@@ -280,6 +287,7 @@ after:
   "Run setup script": "myscript %{name}"
 ```
 
+
 #### Scaffolding parameters
 
 The `params` option contains a list of parameters required by the rig.
@@ -288,13 +296,14 @@ Each definition in the `params` key should start with the name of the
 variable (`name`, `console` and `console_type` in the above example), and 
 contain the below specifications:
 
-| Key         | Purpose                                                  |
-|-------------|----------------------------------------------------------|
-| `prompt`    | The text to display when asking for user input           |
-| `type`      | The variable tyoe. Can be `yesno`, `text` or `select`    |
-| `default`   | The default value. When using `yesno`, use `yes` or `no` |
-| `list`      | An array of allowed options (only used in `select` type) |
-| `condition` | Optional `key=value`. See [conditional parameters](#conditional-parameters) below |
+ Key         | Purpose                                                      
+-------------|--------------------------------------------------------------
+ `prompt`    | The text to display when asking for user input
+ `type`      | The variable tyoe. Can be `yesno`, `text`, `select` or `ruby`
+ `default`   | The default value. When using `yesno`, use `yes` or `no`
+ `list`      | An array of allowed options (only used in `select` type)
+ `condition` | Optional `key=value`. See [conditional parameters](#conditional-parameters) below
+ `code`      | A ruby code to evaluate (only used in `ruby` type). See [calculated parameters](#calculated-parameters) below
 
 Example:
 
@@ -305,6 +314,7 @@ params:
     type: text
     default: project
 ```
+
 
 #### Conditional parameters
 
@@ -332,6 +342,33 @@ params:
     list: [irb, pry]
     condition: console=yes
 ```
+
+
+#### Calculated parameters
+
+You can define a parameter that is calculated with a piece of ruby code.
+
+This parameter may or may not use values from previous input parameters.
+
+In the below example, the `constant_name` parameter will be the uppercase
+version of the `name` parameter:
+
+Example:
+
+```yaml
+params:
+  name:
+    type: ruby
+    code: |
+      "bob"
+
+  constant_name:
+    type: ruby
+    code: |
+      input[:name].upcase
+```
+
+
 ---
 
 [example-rig]: https://github.com/DannyBen/example-rig

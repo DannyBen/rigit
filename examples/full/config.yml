@@ -34,3 +34,8 @@ params:
     prompt: "Name of license file:"
     type: text
     default: MIT
+
+  constant_name:
+    type: ruby
+    code: |
+      input[:name].upcase
