@@ -7,6 +7,8 @@ require 'rigit/rig'
 require 'rigit/git'
 require 'rigit/command_line'
 
+require 'byebug' if ENV['BYEBUG']
+
 module Rigit
   module Commands
   end

@@ -1,9 +1,10 @@
 Rigit
 ==================================================
 
-[![Gem](https://img.shields.io/gem/v/rigit.svg?style=flat-square)](https://rubygems.org/gems/rigit)
-[![Build](https://img.shields.io/travis/DannyBen/rigit.svg?style=flat-square)](https://travis-ci.org/DannyBen/rigit)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/DannyBen/rigit.svg?style=flat-square)](https://codeclimate.com/github/DannyBen/rigit)
+[![Gem Version](https://badge.fury.io/rb/rigit.svg)](https://badge.fury.io/rb/rigit)
+[![Build Status](https://travis-ci.org/DannyBen/rigit.svg?branch=master)](https://travis-ci.org/DannyBen/rigit)
+[![Maintainability](https://api.codeclimate.com/v1/badges/d13abbe6f7601be78cf5/maintainability)](https://codeclimate.com/github/DannyBen/rigit/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/d13abbe6f7601be78cf5/test_coverage)](https://codeclimate.com/github/DannyBen/rigit/test_coverage)
 
 ---
 
