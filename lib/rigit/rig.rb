@@ -100,7 +100,7 @@ module Rigit
 
     def get_file_content(file, arguments)
       File.read(file) % arguments
-    rescue ArgumentError => e
+    rescue ArgumentError, KeyError => e
       raise TemplateError.new file, e.message
     end
   end
