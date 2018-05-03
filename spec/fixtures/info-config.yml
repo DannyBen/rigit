@@ -7,7 +7,7 @@ before:
   "Before Command 2 %{spec}": 'echo "Spec answer was: %{spec}"'
 
 after: 
-  "After Command 1": 'echo "after command 1'
+  "After Command 1": 'echo "after command 1"'
 
 params:
   name:

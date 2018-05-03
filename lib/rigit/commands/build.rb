@@ -138,9 +138,26 @@ module Rigit::Commands
         return if Dir.empty?(target_dir) or force
 
         dirstring = target_dir == '.' ? 'Current directory' : "Directory '#{target_dir}'"
-        continue = tty_prompt.yes? "#{dirstring} is not empty. Continue anyway?", default: false
-        raise Rigit::Exit, "Goodbye" unless continue
+        options = { "Abort" => :abort, "Continue here" => :continue, "Continue in a sub directory" => :create }
+        response = tty_prompt.select "#{dirstring} is not empty.", options, marker: '>'
+        
+        case response
+        when :abort
+          raise Rigit::Exit, "Goodbye"
+        
+        when :create
+          create_subdir
+          verify_target_dir
+        end
       end
+
+      def create_subdir
+        folder = tty_prompt.ask "Sub directory to create:", default: 'app'
+        @target_dir = "#{target_dir}/#{folder}"
+        Dir.mkdir target_dir unless Dir.exist? target_dir
+        say "Creating in #{target_dir}"
+      end
+
     end
   end
 end
