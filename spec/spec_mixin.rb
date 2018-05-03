@@ -12,6 +12,14 @@ module SpecMixin
     end
   end
 
+  def down_arrow
+    "\e[B"
+  end
+
+  def up_arrow
+    "\e[A"
+  end
+
   def supress_output
     original_stdout = $stdout
     $stdout = StringIO.new

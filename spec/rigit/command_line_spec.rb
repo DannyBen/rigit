@@ -75,7 +75,7 @@ describe CommandLine do
     let(:argv) { %w[new created_rig] }
     before { system "rm -rf #{Rig.home}/created_rig" if Dir.exist? "#{Rig.home}/created_rig" }
 
-    it 'works', :focus do
+    it 'works' do
       expect{ described_class.execute argv }.to output(/Rig template created in .*created_rig/).to_stdout
     end
   end

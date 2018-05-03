@@ -13,7 +13,7 @@ describe Commands::Build::BuildHandler do
       
       it 'copies the files without complaining' do
         Dir.chdir workdir do
-          subject.execute
+          supress_output { subject.execute }
           expect(ls).to match_fixture 'ls/minimal'
         end
       end
@@ -24,7 +24,7 @@ describe Commands::Build::BuildHandler do
 
       it "asks for user input and copies the files" do
         Dir.chdir workdir do
-          stdin_send('hello', 'n', "\n") do 
+          stdin_send('hello', 'n', 'n') do 
             expect{ subject.execute }.to output(/Name your project.*Include RSpec files.*Select console/m).to_stdout
           end
           expect(ls).to match_fixture 'ls/full2'
@@ -61,7 +61,7 @@ describe Commands::Build::BuildHandler do
       it "asks if the user wants to continue" do
         Dir.chdir workdir do
           supress_output do
-            stdin_send('n') do 
+            stdin_send('') do 
               expect{ subject.execute }.to raise_error(Rigit::Exit)
             end
           end
@@ -69,11 +69,11 @@ describe Commands::Build::BuildHandler do
         end
       end
 
-      context "when the user answers no" do
+      context "when the user answers Abort" do
         it "raises an error" do
           Dir.chdir workdir do
             supress_output do
-              stdin_send('n') do 
+              stdin_send('') do 
                 expect{ subject.execute }.to raise_error(Rigit::Exit)
               end
             end
@@ -82,16 +82,28 @@ describe Commands::Build::BuildHandler do
         end
       end
 
-      context "when the user answers yes" do
+      context "when the user answers Continue" do
         it "copies the files" do
           Dir.chdir workdir do
-            stdin_send('y') do 
-              expect{ subject.execute }.to output(/Building.*minimal.*yes.*Done/m).to_stdout
+            stdin_send(down_arrow) do 
+              expect{ subject.execute }.to output(/Building.*minimal.*Continue here.*Done/m).to_stdout
             end
             expect(ls).to match_fixture 'ls/not-empty-after'
           end
         end
       end
+
+      context "when the user answers Create" do
+        it "creates a subfolder and copies the files" do
+          Dir.chdir workdir do
+            stdin_send("#{down_arrow}#{down_arrow}", "new_dir") do 
+              expect{ subject.execute }.to output(/Building.*minimal.*Continue in a sub directory.*Creating in \.\/new_dir.*Done/m).to_stdout
+            end
+            expect(ls).to match_fixture 'ls/subdir-build'
+          end
+        end
+      end
+
     end
 
     context "when files with the same name exist" do
@@ -100,7 +112,7 @@ describe Commands::Build::BuildHandler do
 
       it "asks if the user wants to ovrewrite" do
         Dir.chdir workdir do
-          stdin_send('y', 'n') do
+          stdin_send(down_arrow, 'n') do
             expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\n\s*Overwrite\?.*skip/m).to_stdout
           end
         end
@@ -111,7 +123,7 @@ describe Commands::Build::BuildHandler do
 
         it "does not ask if the user wants to overwrite" do
           Dir.chdir workdir do
-            stdin_send('y') do
+            stdin_send(down_arrow) do
               expect{ subject.execute }.not_to output(/Overwrite/).to_stdout
             end
           end
@@ -121,7 +133,7 @@ describe Commands::Build::BuildHandler do
       context "when the user answers no" do
         it "keeps the old content" do
           Dir.chdir workdir do
-            stdin_send('y', 'n') do
+            stdin_send(down_arrow, 'n') do
               expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\n\s*Overwrite\?.*skip/m).to_stdout
             end
             expect(File.read 'some-file.txt').to eq 'OLD CONTENT'
@@ -132,7 +144,7 @@ describe Commands::Build::BuildHandler do
       context "when the user answers yes" do
         it "copies the file content" do
           Dir.chdir workdir do
-            stdin_send('y', 'y') do
+            stdin_send(down_arrow, 'y') do
               expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\n\s*Overwrite\?.*overwrite/m).to_stdout
             end
             expect(File.read 'some-file.txt').to eq 'static content'
@@ -143,7 +155,7 @@ describe Commands::Build::BuildHandler do
       context "when the user answers skip all" do
         it "keeps the old content" do
           Dir.chdir workdir do
-            stdin_send('y', 's') do
+            stdin_send(down_arrow, 's') do
               expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\n\s*Overwrite\?.*skip all/m).to_stdout
             end
             expect(File.read 'some-file.txt').to eq 'OLD CONTENT'
@@ -154,7 +166,7 @@ describe Commands::Build::BuildHandler do
       context "when the user answers overwrite all" do
         it "copies the file content" do
           Dir.chdir workdir do
-            stdin_send('y', 'a') do
+            stdin_send(down_arrow, 'a') do
               expect{ subject.execute }.to output(/File.*\.\/some-file.txt.*already exists.\n\s*Overwrite\?.*overwrite all/m).to_stdout
             end
             expect(File.read 'some-file.txt').to eq 'static content'
