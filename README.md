@@ -2,7 +2,7 @@ Rigit
 ==================================================
 
 [![Gem Version](https://badge.fury.io/rb/rigit.svg)](https://badge.fury.io/rb/rigit)
-[![Build Status](https://travis-ci.com/DannyBen/rigit.svg?branch=master)](https://travis-ci.org/DannyBen/rigit)
+[![Build Status](https://travis-ci.com/DannyBen/rigit.svg?branch=master)](https://travis-ci.com/DannyBen/rigit)
 [![Maintainability](https://api.codeclimate.com/v1/badges/d13abbe6f7601be78cf5/maintainability)](https://codeclimate.com/github/DannyBen/rigit/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/d13abbe6f7601be78cf5/test_coverage)](https://codeclimate.com/github/DannyBen/rigit/test_coverage)
 
