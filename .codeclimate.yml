@@ -1,0 +1,3 @@
+plugins:
+  bundler-audit:
+    enabled: false
