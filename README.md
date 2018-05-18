@@ -156,7 +156,7 @@ The steps in creating a rig are:
 1. Start in a new, empty folder.
 2. Create a folder named `base`. Put all the files and folders of your 
    project inside.
-3. Rename files and folders, and files as needed to include dynamic tokens.
+3. Rename files and folders as needed to include dynamic tokens.
 4. If you want to add some of the files only in specific cases (for example
    only include a license file if the user wants to), you move the files to
    a folder with s special `parameter=value` folder.
