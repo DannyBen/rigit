@@ -1,11 +1,11 @@
-require 'rubygems'
-require 'bundler'
-Bundler.require :default, :development
-
 require 'simplecov'
 SimpleCov.start do
   add_filter "spec"
 end
+
+require 'rubygems'
+require 'bundler'
+Bundler.require :default, :development
 
 require_relative '../lib/rigit'
 
