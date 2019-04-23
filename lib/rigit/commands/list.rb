@@ -33,7 +33,7 @@ module Rigit::Commands
       def dirs
         files = Dir["#{basedir}/*"]
         files.select! { |f| File.directory? f }
-        files.map { |f| File.basename f }
+        files.map { |f| File.basename f }.sort
       end
 
       def basedir
