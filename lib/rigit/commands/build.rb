@@ -139,7 +139,7 @@ module Rigit::Commands
 
         dirstring = target_dir == '.' ? 'Current directory' : "Directory '#{target_dir}'"
         options = { "Abort" => :abort, "Continue here" => :continue, "Continue in a sub directory" => :create }
-        response = tty_prompt.select "#{dirstring} is not empty.", options, marker: '>'
+        response = tty_prompt.select "#{dirstring} is not empty.", options, symbols: { marker: '>' }
         
         case response
         when :abort

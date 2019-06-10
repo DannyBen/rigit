@@ -19,6 +19,6 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'super_docopt', '~> 0.1'
   s.add_runtime_dependency 'configatron', '~> 4.5'
-  s.add_runtime_dependency 'tty-prompt', '~> 0.15'
+  s.add_runtime_dependency 'tty-prompt', '~> 0.19'
   s.add_runtime_dependency 'colsole', '~> 0.5'
 end
