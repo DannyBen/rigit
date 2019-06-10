@@ -1,5 +1,11 @@
 require 'stringio'
 
+class StringIO
+  def wait_readable(*)
+    true
+  end
+end
+
 module SpecMixin
   def stdin_send(*args)
     begin

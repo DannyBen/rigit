@@ -36,7 +36,7 @@ module Rigit
       when 'text'
         prompt.ask text, default: default
       when 'select'
-        prompt.select text, param.list, marker: '>'
+        prompt.select text, param.list, symbols: { marker: '>' }
       when 'ruby'
         instance_eval param.code
       else
