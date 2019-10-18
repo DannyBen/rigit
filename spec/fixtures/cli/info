@@ -1,11 +1,11 @@
-[0;32mname[0m:
+name:
   full
 
-[0;32mpath[0m:
+path:
   /vagrant/gems/rigit/spec/rigs/full
 
-[0;32mconfig[0m:
-  intro: "If you [0;33mrig[0m it, [0;32mthey will come"
+config:
+  intro: "If you rig it, they will come"
   
   outro: "Thank you for scaffolding, goodbye."
   
@@ -14,7 +14,7 @@
     "Before Command 2 %{spec}": 'echo "Spec answer was: %{spec}"'
   
   after: 
-    "After Command 1": 'echo "after command 1'
+    "After Command 1": 'echo "after command 1"'
   
   params:
     name:
@@ -36,4 +36,4 @@
       prompt: "Name of license file:"
       type: text
       default: MIT
-[0m
+
