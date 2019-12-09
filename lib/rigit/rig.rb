@@ -99,9 +99,25 @@ module Rigit
     end
 
     def get_file_content(file, arguments)
+      if binary? file
+        File.read file
+      else
+        eval_file_content file, arguments
+      end
+    end
+
+    def eval_file_content(file, arguments)
       File.read(file) % arguments
     rescue ArgumentError, KeyError => e
       raise TemplateError.new file, e.message
+    end
+
+    def binary?(file)
+      return false unless config.binaries
+      config.binaries.each do |pattern|
+        return true if File.fnmatch pattern, file
+      end
+      false
     end
   end
 end
