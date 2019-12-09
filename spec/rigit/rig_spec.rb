@@ -103,6 +103,18 @@ describe Rig do
       end
     end
 
+    context 'with rigs that contain binary files' do
+      subject { described_class.new 'binary' }
+
+      it 'copies the binaries as is without evaluatin garguments' do
+        Dir.chdir workdir do
+          subject.scaffold
+          expect(ls).to match_fixture 'ls/binary'
+          expect(File.size 'sample-logo.png').to be > 29000
+        end
+      end
+    end    
+
   end
 
   describe '#path' do

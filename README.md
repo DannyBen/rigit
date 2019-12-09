@@ -227,6 +227,13 @@ after:
   "Install Dependencies": "bundle install"
   "Initialize git repo": "git init"
 
+# Specify file patterns that should be copoied as is (without variable
+# replacements).
+binaries:
+  - "*.png"
+  - "*.pdf"
+  - "some-binary-file"
+
 # Parameters to collect on scaffolding
 params:
   name:
