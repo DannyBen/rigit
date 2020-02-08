@@ -227,7 +227,6 @@ after:
   "Install Dependencies": "bundle install"
   "Initialize git repo": "git init"
 
-
 # If set to true, continue running even if the folder is not empty.
 # This has a similar effect to the --force command line flag.
 force: false
