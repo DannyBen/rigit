@@ -18,7 +18,7 @@ module Rigit::Commands
       def initialize(args)
         @args = args
         @rig_name = args['RIG']
-        @force = args['--force']
+        @force = args['--force'] || (config.has_key?(:force) && config.force)
         @target_dir = '.'
       end
 

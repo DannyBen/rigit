@@ -69,6 +69,17 @@ describe Commands::Build::BuildHandler do
         end
       end
 
+      context "when the config contains force=true" do
+        let(:args) {{ 'RIG' => 'forced', 'PARAMS' => [] }}
+
+        it "copies the files" do
+          Dir.chdir workdir do
+            expect{ subject.execute }.to output(/Building.*forced.*Done/m).to_stdout
+            expect(ls).to match_fixture 'ls/forced'
+          end
+        end
+      end
+
       context "when the user answers Abort" do
         it "raises an error" do
           Dir.chdir workdir do
