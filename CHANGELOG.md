@@ -1,6 +1,54 @@
-# Change Log
+# Changelog
+
+## [v0.2.1](https://github.com/DannyBen/rigit/tree/v0.2.1) (2020-02-08)
+
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.2.0...v0.2.1)
+
+**Implemented enhancements:**
+
+- Add config to prevent "directory not empty" warning [\#32](https://github.com/DannyBen/rigit/issues/32)
+
+**Merged pull requests:**
+
+- Add ability to configure force: true [\#52](https://github.com/DannyBen/rigit/pull/52) ([DannyBen](https://github.com/DannyBen))
+- Switch to github actions [\#51](https://github.com/DannyBen/rigit/pull/51) ([DannyBen](https://github.com/DannyBen))
+
+## [v0.2.0](https://github.com/DannyBen/rigit/tree/v0.2.0) (2019-12-09)
+
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.9...v0.2.0)
+
+**Merged pull requests:**
+
+- Add option to copy files without var replacements [\#50](https://github.com/DannyBen/rigit/pull/50) ([DannyBen](https://github.com/DannyBen))
+- Test with Ruby 2.7 [\#49](https://github.com/DannyBen/rigit/pull/49) ([DannyBen](https://github.com/DannyBen))
+- Test with ruby 2.3 [\#48](https://github.com/DannyBen/rigit/pull/48) ([DannyBen](https://github.com/DannyBen))
+
+## [v0.1.9](https://github.com/DannyBen/rigit/tree/v0.1.9) (2019-06-10)
+
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.8...v0.1.9)
+
+**Merged pull requests:**
+
+- Adjust for tty-prompt 0.19 [\#47](https://github.com/DannyBen/rigit/pull/47) ([DannyBen](https://github.com/DannyBen))
+- Maintenance update [\#46](https://github.com/DannyBen/rigit/pull/46) ([DannyBen](https://github.com/DannyBen))
+
+## [v0.1.8](https://github.com/DannyBen/rigit/tree/v0.1.8) (2018-05-03)
+
+[Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.7...v0.1.8)
+
+**Implemented enhancements:**
+
+- Graceful rescue for KeyError [\#38](https://github.com/DannyBen/rigit/issues/38)
+- Offer to create rig base folder [\#28](https://github.com/DannyBen/rigit/issues/28)
+
+**Merged pull requests:**
+
+- Suggest dir creation when dir is not empty [\#43](https://github.com/DannyBen/rigit/pull/43) ([DannyBen](https://github.com/DannyBen))
+- Fix graceful erroring on invalid template key [\#42](https://github.com/DannyBen/rigit/pull/42) ([DannyBen](https://github.com/DannyBen))
+- Error gracefully when filenames contain invalid token [\#41](https://github.com/DannyBen/rigit/pull/41) ([DannyBen](https://github.com/DannyBen))
 
 ## [v0.1.7](https://github.com/DannyBen/rigit/tree/v0.1.7) (2018-03-16)
+
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.6...v0.1.7)
 
 **Implemented enhancements:**
@@ -12,6 +60,7 @@
 - Add calculated \(ruby\) params [\#39](https://github.com/DannyBen/rigit/pull/39) ([DannyBen](https://github.com/DannyBen))
 
 ## [v0.1.6](https://github.com/DannyBen/rigit/tree/v0.1.6) (2018-03-11)
+
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.5...v0.1.6)
 
 **Implemented enhancements:**
@@ -23,6 +72,7 @@
 - Add support for conditional params [\#36](https://github.com/DannyBen/rigit/pull/36) ([DannyBen](https://github.com/DannyBen))
 
 ## [v0.1.5](https://github.com/DannyBen/rigit/tree/v0.1.5) (2018-03-09)
+
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.4...v0.1.5)
 
 **Implemented enhancements:**
@@ -36,6 +86,7 @@
 - Add "rig new NAME" command [\#33](https://github.com/DannyBen/rigit/pull/33) ([DannyBen](https://github.com/DannyBen))
 
 ## [v0.1.4](https://github.com/DannyBen/rigit/tree/v0.1.4) (2018-03-08)
+
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.3...v0.1.4)
 
 **Implemented enhancements:**
@@ -52,6 +103,7 @@
 - Add yes/no/all/skip all to Overwrite prompt [\#29](https://github.com/DannyBen/rigit/pull/29) ([DannyBen](https://github.com/DannyBen))
 
 ## [v0.1.3](https://github.com/DannyBen/rigit/tree/v0.1.3) (2018-03-01)
+
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.2...v0.1.3)
 
 **Fixed bugs:**
@@ -63,6 +115,7 @@
 - Fix copying of dotfiles and folders [\#26](https://github.com/DannyBen/rigit/pull/26) ([DannyBen](https://github.com/DannyBen))
 
 ## [v0.1.2](https://github.com/DannyBen/rigit/tree/v0.1.2) (2018-02-28)
+
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.1...v0.1.2)
 
 **Implemented enhancements:**
@@ -74,6 +127,7 @@
 - Add --force and outro config [\#24](https://github.com/DannyBen/rigit/pull/24) ([DannyBen](https://github.com/DannyBen))
 
 ## [v0.1.1](https://github.com/DannyBen/rigit/tree/v0.1.1) (2018-02-27)
+
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.1.0...v0.1.1)
 
 **Implemented enhancements:**
@@ -96,6 +150,7 @@
 - Rescue template errors with grace [\#18](https://github.com/DannyBen/rigit/pull/18) ([DannyBen](https://github.com/DannyBen))
 
 ## [v0.1.0](https://github.com/DannyBen/rigit/tree/v0.1.0) (2018-02-17)
+
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.0.3...v0.1.0)
 
 **Implemented enhancements:**
@@ -107,6 +162,7 @@
 - Add rig list command [\#15](https://github.com/DannyBen/rigit/pull/15) ([DannyBen](https://github.com/DannyBen))
 
 ## [v0.0.3](https://github.com/DannyBen/rigit/tree/v0.0.3) (2018-02-17)
+
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.0.2...v0.0.3)
 
 **Implemented enhancements:**
@@ -127,6 +183,7 @@
 - Add rig update command [\#8](https://github.com/DannyBen/rigit/pull/8) ([DannyBen](https://github.com/DannyBen))
 
 ## [v0.0.2](https://github.com/DannyBen/rigit/tree/v0.0.2) (2018-02-16)
+
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.0.1...v0.0.2)
 
 **Closed issues:**
@@ -139,5 +196,8 @@
 
 ## [v0.0.1](https://github.com/DannyBen/rigit/tree/v0.0.1) (2018-02-16)
 
+[Full Changelog](https://github.com/DannyBen/rigit/compare/4237639e14e63995b885543098f06d21a7c1d799...v0.0.1)
 
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+
+
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
