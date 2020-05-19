@@ -14,7 +14,7 @@ describe Commands::Build::BuildHandler do
       it 'copies the files without complaining' do
         Dir.chdir workdir do
           supress_output { subject.execute }
-          expect(ls).to match_fixture 'ls/minimal'
+          expect(ls).to match_approval 'ls/minimal'
         end
       end
     end
@@ -27,7 +27,7 @@ describe Commands::Build::BuildHandler do
           stdin_send('hello', 'n', 'n') do 
             expect{ subject.execute }.to output(/Name your project.*Include RSpec files.*Select console/m).to_stdout
           end
-          expect(ls).to match_fixture 'ls/full2'
+          expect(ls).to match_approval 'ls/full2'
         end
       end
     end
@@ -37,8 +37,8 @@ describe Commands::Build::BuildHandler do
 
       it "does not ask for user input and copies the files" do
         Dir.chdir workdir do
-          expect{ subject.execute }.to output_fixture('cli/build-full')
-          expect(ls).to match_fixture 'ls/full2'
+          expect{ subject.execute }.to output_approval('cli/build-full')
+          expect(ls).to match_approval 'ls/full2'
         end
       end
     end
@@ -48,8 +48,8 @@ describe Commands::Build::BuildHandler do
 
       it "executes the commands" do
         Dir.chdir workdir do
-          expect{ subject.execute }.to output_fixture('cli/build-actions')
-          expect(ls).to match_fixture 'ls/actions'
+          expect{ subject.execute }.to output_approval('cli/build-actions')
+          expect(ls).to match_approval 'ls/actions'
         end
       end      
     end
@@ -65,7 +65,7 @@ describe Commands::Build::BuildHandler do
               expect{ subject.execute }.to raise_error(Rigit::Exit)
             end
           end
-          expect(ls).to match_fixture 'ls/not-empty'
+          expect(ls).to match_approval 'ls/not-empty'
         end
       end
 
@@ -75,7 +75,7 @@ describe Commands::Build::BuildHandler do
         it "copies the files" do
           Dir.chdir workdir do
             expect{ subject.execute }.to output(/Building.*forced.*Done/m).to_stdout
-            expect(ls).to match_fixture 'ls/forced'
+            expect(ls).to match_approval 'ls/forced'
           end
         end
       end
@@ -88,7 +88,7 @@ describe Commands::Build::BuildHandler do
                 expect{ subject.execute }.to raise_error(Rigit::Exit)
               end
             end
-            expect(ls).to match_fixture 'ls/not-empty'
+            expect(ls).to match_approval 'ls/not-empty'
           end
         end
       end
@@ -99,7 +99,7 @@ describe Commands::Build::BuildHandler do
             stdin_send(down_arrow) do 
               expect{ subject.execute }.to output(/Building.*minimal.*Continue here.*Done/m).to_stdout
             end
-            expect(ls).to match_fixture 'ls/not-empty-after'
+            expect(ls).to match_approval 'ls/not-empty-after'
           end
         end
       end
@@ -110,7 +110,7 @@ describe Commands::Build::BuildHandler do
             stdin_send("#{down_arrow}#{down_arrow}", "new_dir") do 
               expect{ subject.execute }.to output(/Building.*minimal.*Continue in a sub directory.*Creating in \.\/new_dir.*Done/m).to_stdout
             end
-            expect(ls).to match_fixture 'ls/subdir-build'
+            expect(ls).to match_approval 'ls/subdir-build'
           end
         end
       end

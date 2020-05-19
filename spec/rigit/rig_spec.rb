@@ -51,7 +51,7 @@ describe Rig do
       it 'copies all files and folders' do
         Dir.chdir workdir do
           subject.scaffold
-          expect(ls).to match_fixture 'ls/minimal'
+          expect(ls).to match_approval 'ls/minimal'
         end
       end
     end
@@ -63,7 +63,7 @@ describe Rig do
       it 'copies all files and folders' do
         Dir.chdir workdir do
           subject.scaffold arguments: arguments
-          expect(ls).to match_fixture 'ls/full'
+          expect(ls).to match_approval 'ls/full'
         end
       end
 
@@ -75,7 +75,7 @@ describe Rig do
           
           files.each do |file|
             fixture_name = "content/#{File.basename(file)}"
-            expect(File.read file).to match_fixture(fixture_name)
+            expect(File.read file).to match_approval(fixture_name)
           end
         end
       end
@@ -109,7 +109,7 @@ describe Rig do
       it 'copies the binaries as is without evaluatin garguments' do
         Dir.chdir workdir do
           subject.scaffold
-          expect(ls).to match_fixture 'ls/binary'
+          expect(ls).to match_approval 'ls/binary'
           expect(File.size 'sample-logo.png').to be > 29000
         end
       end
@@ -179,7 +179,7 @@ describe Rig do
       subject { described_class.new 'full' }
       
       it "returns the config yaml in the config key" do
-        expect(subject.info[:config]).to match_fixture('info-config.yml')
+        expect(subject.info[:config]).to match_approval('info-config.yml')
       end
     end
 

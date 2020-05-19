@@ -8,7 +8,7 @@ describe Commands::Update::UpdateHandler do
     context "when the rig is installed" do
       it "pulls the rig from the git repo" do
         with_env 'SIMULATE_GIT' do
-          expect{ subject.execute }.to output_fixture('cli/update')
+          expect{ subject.execute }.to output_approval('cli/update')
         end
       end
     end

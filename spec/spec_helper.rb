@@ -14,6 +14,7 @@ require_relative 'spec_mixin'
 
 RSpec.configure do |config|
   config.include SpecMixin
+  config.approvals_path = File.expand_path 'fixtures', __dir__
   config.strip_ansi_escape = true
 end
 

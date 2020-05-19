@@ -7,7 +7,7 @@ describe Commands::Info::InfoHandler do
   describe '#execute' do
     context "when the rig is installed" do
       it "shows meta information" do
-        expect{ subject.execute }.to output_fixture('cli/info').diff(60)
+        expect{ subject.execute }.to output_approval('cli/info').diff(60)
       end
     end
 

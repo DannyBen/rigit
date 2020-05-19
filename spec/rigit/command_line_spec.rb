@@ -5,7 +5,7 @@ describe CommandLine do
 
   context "without arguments" do
     it "shows usage" do
-      expect{ described_class.execute }.to output_fixture 'cli/usage'
+      expect{ described_class.execute }.to output_approval 'cli/usage'
     end
   end
 
@@ -15,7 +15,7 @@ describe CommandLine do
 
     it 'works' do
       Dir.chdir workdir do
-        expect{ described_class.execute argv }.to output_fixture 'cli/build'
+        expect{ described_class.execute argv }.to output_approval 'cli/build'
       end
     end
   end
@@ -50,7 +50,7 @@ describe CommandLine do
 
     it 'works' do
       with_env 'SIMULATE_GIT' do
-        expect{ described_class.execute argv }.to output_fixture('cli/update')
+        expect{ described_class.execute argv }.to output_approval('cli/update')
       end
     end
   end
