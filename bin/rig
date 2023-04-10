@@ -14,7 +14,7 @@ rescue Rigit::ConfigError => e
   exit 1
 rescue Rigit::TemplateError => e
   say "r`#{e.class} - #{e.message}`\nin g`#{e.file}`"
-  say "Are you escaping % characters as %%?" if e.message =~ /%/
+  say 'Are you escaping % characters as %%?' if /%/.match?(e.message)
 rescue TTY::Reader::InputInterrupt
   say "\nGoodbye"
   exit 1

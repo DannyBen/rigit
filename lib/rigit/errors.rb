@@ -6,7 +6,7 @@ module Rigit
   class TemplateError < StandardError
     attr_reader :file
 
-    def initialize(file, message='')
+    def initialize(file, message = '')
       @file = file
       super message
     end

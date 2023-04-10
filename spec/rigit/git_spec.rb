@@ -13,7 +13,7 @@ describe Git do
   context 'when SIMULATE_GIT is set' do
     it 'prints the git command' do
       with_env 'SIMULATE_GIT' do
-        expect{ Git.clone 'repo', 'folder' }.to output("Simulated Execute: git clone repo \"folder\"\n").to_stdout
+        expect { Git.clone 'repo', 'folder' }.to output("Simulated Execute: git clone repo \"folder\"\n").to_stdout
       end
     end
   end
@@ -21,7 +21,7 @@ describe Git do
   describe '::clone' do
     it 'works' do
       with_env 'SIMULATE_GIT' do
-        expect{ Git.clone 'repo', 'folder' }.to output("Simulated Execute: git clone repo \"folder\"\n").to_stdout
+        expect { Git.clone 'repo', 'folder' }.to output("Simulated Execute: git clone repo \"folder\"\n").to_stdout
       end
     end
   end
@@ -29,7 +29,7 @@ describe Git do
   describe '::pull' do
     it 'works' do
       with_env 'SIMULATE_GIT' do
-        expect{ Git.pull "#{Rig.home}/minimal" }.to output("Simulated Execute: git pull\n").to_stdout
+        expect { Git.pull "#{Rig.home}/minimal" }.to output("Simulated Execute: git pull\n").to_stdout
       end
     end
   end

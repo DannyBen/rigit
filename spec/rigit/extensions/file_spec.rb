@@ -4,7 +4,7 @@ describe File do
   describe '::deep_write' do
     let(:dir) { 'spec/tmp/deep/folder' }
     let(:file) { "#{dir}/file.txt" }
-    let(:content) { "some content" }
+    let(:content) { 'some content' }
 
     before do
       system "rm -rf #{dir}" if Dir.exist? dir

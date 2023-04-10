@@ -2,13 +2,12 @@ module Rigit::Commands
   # The {Info} module provides the {#info} command for the {CommandLine}
   # module.
   module Info
-    
     # The command line +info+ command.
     def info
       InfoHandler.new(args).execute
     end
 
-    # Internal class to handle the display of metadata about a rig for the 
+    # Internal class to handle the display of metadata about a rig for the
     # {CommandLine} class.
     class InfoHandler
       include Colsole
@@ -25,13 +24,13 @@ module Rigit::Commands
         info
       end
 
-      private
+    private
 
       def info
         rig.info.each do |key, value|
           say "g`#{key}`:"
           say word_wrap "  #{value}"
-          say ""
+          say ''
         end
       end
 
@@ -40,10 +39,10 @@ module Rigit::Commands
       end
 
       def verify_presence
-        if !rig.exist?
-          say "Cannot find rig g`#{rig_name}`"
-          raise Rigit::Exit
-        end
+        return if rig.exist?
+
+        say "Cannot find rig g`#{rig_name}`"
+        raise Rigit::Exit
       end
     end
   end

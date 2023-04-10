@@ -1,5 +1,5 @@
 module Rigit::Commands
-  # The {Install} module provides the {#install} command for the 
+  # The {Install} module provides the {#install} command for the
   # {CommandLine} module.
   module Install
     # The command line +install+ command.
@@ -24,7 +24,7 @@ module Rigit::Commands
         install
       end
 
-      private
+    private
 
       def install
         say "Installing g`#{repo}`"
@@ -37,10 +37,9 @@ module Rigit::Commands
           say "  m`rig build #{rig_name}`\n"
         else
           # :nocov:
-          say "r`Install failed`"
+          say 'r`Install failed`'
           # :nocov:
         end
-
       end
 
       def rig
@@ -52,12 +51,12 @@ module Rigit::Commands
       end
 
       def verify_dirs
-        if rig.exist?
-          say "Rig g`#{rig_name}` is already installed"
-          say "In order to update it from the source repository, run:\n"
-          say "  m`rig update #{rig_name}`\n"
-          raise Rigit::Exit
-        end
+        return unless rig.exist?
+
+        say "Rig g`#{rig_name}` is already installed"
+        say "In order to update it from the source repository, run:\n"
+        say "  m`rig update #{rig_name}`\n"
+        raise Rigit::Exit
       end
     end
   end

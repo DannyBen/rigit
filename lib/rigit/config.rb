@@ -3,8 +3,8 @@ require 'yaml'
 
 module Rigit
   # Handles the rig config file.
-  # Usage example: 
-  # 
+  # Usage example:
+  #
   #    Config.load 'path/to.yml'
   #
   class Config

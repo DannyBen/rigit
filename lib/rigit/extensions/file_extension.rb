@@ -10,4 +10,3 @@ class File
     # :nocov:
   end
 end
-
