@@ -35,7 +35,7 @@ module SpecMixin
   end
 
   def ls
-    Dir['**/*'].sort.to_s
+    Dir['**/*'].to_s
   end
 
   def without_env(var, &block)

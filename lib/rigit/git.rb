@@ -19,7 +19,7 @@ module Rigit
         true
       else
         system command
-        $?&.exitstatus == 0
+        $?&.exitstatus&.zero?
       end
     end
   end

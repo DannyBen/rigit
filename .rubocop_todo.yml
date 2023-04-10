@@ -1,0 +1,13 @@
+# Offense count: 7
+# Configuration parameters: Include, CustomTransform, IgnoreMethods, SpecSuffixOnly.
+# Include: **/*_spec*rb*, **/spec/**/*
+RSpec/FilePath:
+  Exclude:
+    - 'spec/rigit/commands/build_handler_spec.rb'
+    - 'spec/rigit/commands/info_handler_spec.rb'
+    - 'spec/rigit/commands/install_handler_spec.rb'
+    - 'spec/rigit/commands/list_handler_spec.rb'
+    - 'spec/rigit/commands/new_rig_handler_spec.rb'
+    - 'spec/rigit/commands/uninstall_handler_spec.rb'
+    - 'spec/rigit/commands/update_handler_spec.rb'
+

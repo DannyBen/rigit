@@ -15,9 +15,9 @@ describe File do
     end
 
     it 'writes to a file and creates directories as needed' do
-      File.deep_write file, content
-      expect(File).to exist file
-      expect(File.read file).to eq content
+      described_class.deep_write file, content
+      expect(described_class).to exist file
+      expect(described_class.read file).to eq content
     end
   end
 end

@@ -31,15 +31,15 @@ describe Rig do
   end
 
   describe '::create' do
-    before { system "rm -rf #{Rig.home}/created_rig" if Dir.exist? "#{Rig.home}/created_rig" }
+    before { system "rm -rf #{described_class.home}/created_rig" if Dir.exist? "#{described_class.home}/created_rig" }
 
     it 'creates a new rig template' do
-      expect(Dir).not_to exist("#{Rig.home}/created_rig")
+      expect(Dir).not_to exist("#{described_class.home}/created_rig")
 
       described_class.create 'created_rig'
 
-      expect(File).to exist("#{Rig.home}/created_rig/config.yml")
-      expect(Dir).to exist("#{Rig.home}/created_rig/base")
+      expect(File).to exist("#{described_class.home}/created_rig/config.yml")
+      expect(Dir).to exist("#{described_class.home}/created_rig/base")
     end
   end
 
@@ -122,7 +122,7 @@ describe Rig do
 
   describe '#path' do
     it 'returns full rig path' do
-      expect(subject.path).to eq "#{Rig.home}/#{subject.name}"
+      expect(subject.path).to eq "#{described_class.home}/#{subject.name}"
     end
   end
 

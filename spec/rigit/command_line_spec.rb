@@ -14,7 +14,7 @@ describe CommandLine do
 
     before { reset_workdir }
 
-    it 'works' do
+    it 'executes successfully' do
       Dir.chdir workdir do
         expect { described_class.execute argv }.to output_approval 'cli/build'
       end
@@ -26,7 +26,7 @@ describe CommandLine do
 
     before { system "rm -rf #{Rig.home}/pulled" if Dir.exist? "#{Rig.home}/pulled" }
 
-    it 'works' do
+    it 'executes successfully' do
       with_env 'SIMULATE_GIT' do
         expect { described_class.execute argv }.to output(%r{Installing.*some/repo.*git clone.*successfully}m).to_stdout
       end
@@ -39,7 +39,7 @@ describe CommandLine do
     before { File.deep_write "#{Rig.home}/removeme/touchy-file", 'i am touched' }
     after { system "rm -rf #{Rig.home}/removeme" if Dir.exist? "#{Rig.home}/removeme" }
 
-    it 'works' do
+    it 'executes successfully' do
       stdin_send('y', "\n") do
         expect { described_class.execute argv }.to output(/Rig uninstalled.*successfully/).to_stdout
       end
@@ -52,7 +52,7 @@ describe CommandLine do
 
     before { FileUtils.mkdir "#{Rig.home}/pulled" unless Dir.exist? "#{Rig.home}/pulled" }
 
-    it 'works' do
+    it 'executes successfully' do
       with_env 'SIMULATE_GIT' do
         expect { described_class.execute argv }.to output_approval('cli/update')
       end
@@ -62,7 +62,7 @@ describe CommandLine do
   describe 'info' do
     let(:argv) { %w[info minimal] }
 
-    it 'works' do
+    it 'executes successfully' do
       expect { described_class.execute argv }.to output(/name.*minimal.*path.*config.*<empty>/m).to_stdout
     end
   end
@@ -70,7 +70,7 @@ describe CommandLine do
   describe 'list' do
     let(:argv) { %w[list] }
 
-    it 'works' do
+    it 'executes successfully' do
       expect { described_class.execute argv }.to output(/- full.*- minimal/m).to_stdout
     end
   end
@@ -80,7 +80,7 @@ describe CommandLine do
 
     before { system "rm -rf #{Rig.home}/created_rig" if Dir.exist? "#{Rig.home}/created_rig" }
 
-    it 'works' do
+    it 'executes successfully' do
       expect { described_class.execute argv }.to output(/Rig template created in .*created_rig/).to_stdout
     end
   end

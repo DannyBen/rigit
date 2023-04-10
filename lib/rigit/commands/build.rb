@@ -69,7 +69,7 @@ module Rigit::Commands
 
         response_log[file] = true
 
-        unless overwrite_all or force
+        unless overwrite_all || force
           if skip_all
             response_log[file] = false
           elsif File.exist? file
@@ -140,7 +140,7 @@ module Rigit::Commands
       end
 
       def verify_target_dir
-        return if Dir.empty?(target_dir) or force
+        return if Dir.empty?(target_dir) || force
 
         dirstring = target_dir == '.' ? 'Current directory' : "Directory '#{target_dir}'"
         options = { 'Abort' => :abort, 'Continue here' => :continue, 'Continue in a sub directory' => :create }
