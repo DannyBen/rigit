@@ -1,6 +1,13 @@
 Change Log
 ========================================
 
+v0.3.0 - 2023-04-10
+----------------------------------------
+
+- Update dependencies (Colsole + Runfile)
+- Drop support for Ruby 2.x
+
+
 ## [v0.2.1](https://github.com/DannyBen/rigit/tree/v0.2.1) (2020-02-08)
 
 [Full Changelog](https://github.com/DannyBen/rigit/compare/v0.2.0...v0.2.1)
