@@ -18,7 +18,7 @@ describe Commands::Update::UpdateHandler do
 
       it 'shows a friendly message and raises Exit' do
         supress_output do
-          expect(subject).to receive(:say).with('Rig !txtgrn!no-such-rig!txtrst! is not installed')
+          expect(subject).to receive(:say).with('Rig g`no-such-rig` is not installed')
           expect{ subject.execute }.to raise_error(Rigit::Exit)
         end
       end

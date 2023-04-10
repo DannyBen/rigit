@@ -41,7 +41,7 @@ describe Commands::Uninstall::UninstallHandler do
       it 'shows a friendly message and raises Exit' do
         supress_output do
           allow(subject).to receive(:say)
-          expect(subject).to receive(:say).with('Rig !txtgrn!removeme!txtrst! is not installed')
+          expect(subject).to receive(:say).with('Rig g`removeme` is not installed')
           expect{ subject.execute }.to raise_error(Rigit::Exit)
         end
       end

@@ -16,7 +16,7 @@ describe Commands::Info::InfoHandler do
 
       it 'shows a friendly message and raises Exit' do
         supress_output do
-          expect(subject).to receive(:say).with('Cannot find rig !txtgrn!no-such-rig')
+          expect(subject).to receive(:say).with('Cannot find rig g`no-such-rig`')
           expect{ subject.execute }.to raise_error(Rigit::Exit)
         end
       end

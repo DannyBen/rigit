@@ -13,7 +13,7 @@ describe Commands::Install::InstallHandler do
       it 'shows a friendly message and raises Exit' do
         supress_output do
           allow(subject).to receive(:say)
-          expect(subject).to receive(:say).with('Rig !txtgrn!pulled!txtrst! is already installed')
+          expect(subject).to receive(:say).with('Rig g`pulled` is already installed')
           expect{ subject.execute }.to raise_error(Rigit::Exit)
         end
       end

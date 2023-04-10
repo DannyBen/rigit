@@ -23,7 +23,7 @@ module Rigit::Commands
       end
 
       def execute
-        say "Building !txtgrn!#{rig_name}"
+        say "Building g`#{rig_name}`"
         say config.intro if config.has_key? :intro
         verify_dirs
         arguments = prompt.get_input params
@@ -52,7 +52,7 @@ module Rigit::Commands
       # both labels and commands accept string interpolation +%{tokens}+
       def execute_actions(actions, arguments)
         actions.each do |label, command|
-          say "!txtgrn!#{label}" % arguments
+          say "g`#{label}`" % arguments
           system command % arguments
         end
       end
@@ -82,7 +82,7 @@ module Rigit::Commands
       end
 
       def prompt_user_to_overwrite(file)
-        say "File !txtgrn!#{file}!txtrst! already exists."
+        say "File g`#{file}` already exists."
         tty_prompt.expand "  Overwrite?" do |menu|
           menu.choice key: 'y', name: 'overwrite',     value: true
           menu.choice key: 'n', name: 'skip',          value: false

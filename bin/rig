@@ -10,10 +10,10 @@ rescue Rigit::Exit => e
   say message unless message == 'Rigit::Exit'
   exit 1
 rescue Rigit::ConfigError => e
-  say "!txtred!#{e.class} - #{e.message}"
+  say "r`#{e.class} - #{e.message}`"
   exit 1
 rescue Rigit::TemplateError => e
-  say "!txtred!#{e.class} - #{e.message}!txtrst!\nin !txtgrn!#{e.file}!txtrst!"
+  say "r`#{e.class} - #{e.message}`\nin g`#{e.file}`"
   say "Are you escaping % characters as %%?" if e.message =~ /%/
 rescue TTY::Reader::InputInterrupt
   say "\nGoodbye"

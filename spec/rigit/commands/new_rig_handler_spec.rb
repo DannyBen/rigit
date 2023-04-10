@@ -15,7 +15,7 @@ describe Commands::NewRig::NewRigHandler do
 
       it 'shows a friendly message and raises Exit' do
         supress_output do
-          expect(subject).to receive(:say).with('Rig !txtgrn!minimal!txtrst! already exists, choose a different name')
+          expect(subject).to receive(:say).with('Rig g`minimal` already exists, choose a different name')
           expect{ subject.execute }.to raise_error(Rigit::Exit)
         end
       end

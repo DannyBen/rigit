@@ -29,7 +29,7 @@ module Rigit::Commands
 
       def info
         rig.info.each do |key, value|
-          say "!txtgrn!#{key}!txtrst!:"
+          say "g`#{key}`:"
           say word_wrap "  #{value}"
           say ""
         end
@@ -41,7 +41,7 @@ module Rigit::Commands
 
       def verify_presence
         if !rig.exist?
-          say "Cannot find rig !txtgrn!#{rig_name}"
+          say "Cannot find rig g`#{rig_name}`"
           raise Rigit::Exit
         end
       end

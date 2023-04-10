@@ -22,7 +22,7 @@ module Rigit::Commands
 
       def execute
         prefix = subfolder ? "Subfolders" : "Rigs"
-        say "#{prefix} in !txtgrn!#{basedir}!txtrst!:"
+        say "#{prefix} in g`#{basedir}`:"
         dirs.each do |file|
           say "- #{file}"
         end

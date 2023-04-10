@@ -23,7 +23,7 @@ module Rigit::Commands
       def execute
         verify_presence
         Rigit::Rig.create name
-        say "Rig template created in !txtgrn!#{rig.path}"
+        say "Rig template created in g`#{rig.path}`"
       end
 
       private
@@ -34,7 +34,7 @@ module Rigit::Commands
 
       def verify_presence
         if rig.exist?
-          say "Rig !txtgrn!#{name}!txtrst! already exists, choose a different name"
+          say "Rig g`#{name}` already exists, choose a different name"
           raise Rigit::Exit
         end
       end
