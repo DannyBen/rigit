@@ -7,50 +7,52 @@ describe Prompt do
     let(:params) { Config.load('spec/fixtures/prompt/normal.yml').params }
 
     it 'asks the user for input' do
-      stdin_send('hello', 'y', "\n") do 
-        expect{ @result = subject.get_input }.to output(/Name your project.*Include RSpec files.*Select console/m).to_stdout
-        expect(@result).to eq({ name: "hello", spec: "yes", console: "irb" })
+      stdin_send('hello', 'y', "\n") do
+        expect do
+          @result = subject.get_input
+        end.to output(/Name your project.*Include RSpec files.*Select console/m).to_stdout
+        expect(@result).to eq({ name: 'hello', spec: 'yes', console: 'irb' })
       end
     end
 
-    context "with invalid type" do
+    context 'with invalid type' do
       let(:params) { Config.load('spec/fixtures/prompt/invalid.yml').params }
 
-      it "raises ConfigError" do
-        expect{ subject.get_input }.to raise_error(Rigit::ConfigError)
+      it 'raises ConfigError' do
+        expect { subject.get_input }.to raise_error(Rigit::ConfigError)
       end
     end
 
-    context "with a conditional param" do
+    context 'with a conditional param' do
       let(:params) { Config.load('spec/fixtures/prompt/conditional.yml').params }
 
-      context "when the condition is met" do
-        it "asks for input" do
-          stdin_send('y', 'mybin') do 
-            expect{ @result = subject.get_input }.to output(/Include bin?.*Yes.*Name of the bin file:.*mybin/m).to_stdout
-            expect(@result).to eq({ bin: "yes", binfile: "mybin" })
+      context 'when the condition is met' do
+        it 'asks for input' do
+          stdin_send('y', 'mybin') do
+            expect do
+              @result = subject.get_input
+            end.to output(/Include bin?.*Yes.*Name of the bin file:.*mybin/m).to_stdout
+            expect(@result).to eq({ bin: 'yes', binfile: 'mybin' })
           end
         end
       end
 
-      context "when the condition is not met" do
-        it "does not ask for input" do
-          stdin_send('n') do 
-            expect{ @result = subject.get_input }.to output(/Include bin?.*no/).to_stdout
-            expect(@result).to eq({ bin: "no" })
+      context 'when the condition is not met' do
+        it 'does not ask for input' do
+          stdin_send('n') do
+            expect { @result = subject.get_input }.to output(/Include bin?.*no/).to_stdout
+            expect(@result).to eq({ bin: 'no' })
           end
-        end        
+        end
       end
     end
 
-    context "with a ruby-type param" do
+    context 'with a ruby-type param' do
       let(:params) { Config.load('spec/fixtures/prompt/ruby-type.yml').params }
 
-      it "evaluates the code" do
-        expect(subject.get_input).to eq({ name: "bob", nickname: "BOBBY" })
+      it 'evaluates the code' do
+        expect(subject.get_input).to eq({ name: 'bob', nickname: 'BOBBY' })
       end
     end
-
-
   end
 end

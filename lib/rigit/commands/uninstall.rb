@@ -1,5 +1,5 @@
 module Rigit::Commands
-  # The {Uninstall} module provides the {#uninstall} command for the 
+  # The {Uninstall} module provides the {#uninstall} command for the
   # {CommandLine} module.
   module Uninstall
     # The command line +uninstall+ command.
@@ -23,23 +23,23 @@ module Rigit::Commands
         uninstall
       end
 
-      private
+    private
 
       def uninstall
-        say "This will remove !txtgrn!#{rig_name}!txtrst! and delete\n#{target_path}"
-        continue = tty_prompt.yes? "Continue?", default: false
+        say "This will remove g`#{rig_name}` and delete\n#{target_path}"
+        continue = tty_prompt.yes? 'Continue?', default: false
         uninstall! if continue
       end
 
       def uninstall!
-        say "Uninstalling !txtgrn!#{rig_name}"
+        say "Uninstalling g`#{rig_name}`"
         success = FileUtils.rm_rf target_path
 
         if success
-          say "Rig uninstalled !txtgrn!successfully"
+          say 'Rig uninstalled g`successfully`'
         else
           # :nocov:
-          say "!txtred!Uninstall failed"
+          say 'r`Uninstall failed`'
           # :nocov:
         end
       end
@@ -57,10 +57,10 @@ module Rigit::Commands
       end
 
       def verify_dirs
-        if !rig.exist?
-          say "Rig !txtgrn!#{rig_name}!txtrst! is not installed"
-          raise Rigit::Exit
-        end
+        return if rig.exist?
+
+        say "Rig g`#{rig_name}` is not installed"
+        raise Rigit::Exit
       end
     end
   end

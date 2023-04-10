@@ -1,4 +1,4 @@
-require 'rigit/extensions/file_extension.rb'
+require 'rigit/extensions/file_extension'
 
 require 'rigit/config'
 require 'rigit/errors'

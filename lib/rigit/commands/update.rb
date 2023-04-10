@@ -19,16 +19,16 @@ module Rigit::Commands
         update
       end
 
-      private
+    private
 
       def update
-        say "Updating !txtgrn!#{rig_name}"
+        say "Updating g`#{rig_name}`"
         success = Rigit::Git.pull target_path
         if success
-          say "Rig updated !txtgrn!successfully!txtrst!"
+          say 'Rig updated g`successfully`'
         else
           # :nocov:
-          say "!txtred!Update failed"
+          say 'r`Update failed`'
           # :nocov:
         end
       end
@@ -42,10 +42,10 @@ module Rigit::Commands
       end
 
       def verify_dirs
-        if !rig.exist?
-          say "Rig !txtgrn!#{rig_name}!txtrst! is not installed"
-          raise Rigit::Exit
-        end
+        return if rig.exist?
+
+        say "Rig g`#{rig_name}` is not installed"
+        raise Rigit::Exit
       end
     end
   end

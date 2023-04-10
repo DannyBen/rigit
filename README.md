@@ -273,7 +273,7 @@ you can use [color markers][colsole-colors]
 Example:
 
 ```yaml
-intro: Welcome to my blue !txtblu!rig!txtrst!`
+intro: Welcome to my blue b`rig`
 outro: Installation completed successfully
 ```
 

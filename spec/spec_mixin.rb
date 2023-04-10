@@ -8,14 +8,12 @@ end
 
 module SpecMixin
   def stdin_send(*args)
-    begin
-      $stdin = StringIO.new
-      $stdin.puts(args.shift) until args.empty?
-      $stdin.rewind
-      yield
-    ensure
-      $stdin = STDIN
-    end
+    $stdin = StringIO.new
+    $stdin.puts(args.shift) until args.empty?
+    $stdin.rewind
+    yield
+  ensure
+    $stdin = STDIN
   end
 
   def down_arrow
@@ -37,14 +35,14 @@ module SpecMixin
   end
 
   def ls
-    Dir['**/*'].sort.to_s
+    Dir['**/*'].to_s
   end
 
   def without_env(var, &block)
     with_env var, nil, &block
   end
 
-  def with_env(var, value='yes')
+  def with_env(var, value = 'yes')
     oritinal_value = ENV[var]
     ENV[var] = value
     yield

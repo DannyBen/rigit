@@ -2,7 +2,6 @@ module Rigit::Commands
   # The {Build} module provides the {#build} command for the {CommandLine}
   # module.
   module Build
-
     # The command line +build+ command.
     def build
       BuildHandler.new(args).execute
@@ -23,23 +22,23 @@ module Rigit::Commands
       end
 
       def execute
-        say "Building !txtgrn!#{rig_name}"
+        say "Building g`#{rig_name}`"
         say config.intro if config.has_key? :intro
         verify_dirs
         arguments = prompt.get_input params
 
         scaffold arguments
 
-        say config.has_key?(:outro) ? config.outro : "Done"
+        say config.has_key?(:outro) ? config.outro : 'Done'
       end
 
-      private
+    private
 
       # Call Rig#scaffold while checking each file to see if it should be
       # overwritten or not.
       def scaffold(arguments)
         execute_actions config.before, arguments if config.has_key? :before
-        
+
         rig.scaffold arguments: arguments, target_dir: target_dir do |file|
           overwrite_file? file
         end
@@ -47,12 +46,12 @@ module Rigit::Commands
         execute_actions config.after, arguments if config.has_key? :after
       end
 
-      # Execute user-defined system commands. 
+      # Execute user-defined system commands.
       # Actions are expected to be provided as a hash (label=command) and
       # both labels and commands accept string interpolation +%{tokens}+
       def execute_actions(actions, arguments)
         actions.each do |label, command|
-          say "!txtgrn!#{label}" % arguments
+          say "g`#{label}`" % arguments
           system command % arguments
         end
       end
@@ -60,7 +59,7 @@ module Rigit::Commands
       # Check various scenarios to decide if the file should be overwritten
       # or not. These are the scenarios covered by this method:
       # 1. The user provided +--focce+ in the command line
-      # 2. The user answered "overwrite all" or "skip all" when he asked 
+      # 2. The user answered "overwrite all" or "skip all" when he asked
       #    about the first conflicting file.
       # 3. In cases where an additive dir contains a file that was originally
       #    new, approved or rejected - we use this existing knowledge (which
@@ -70,7 +69,7 @@ module Rigit::Commands
 
         response_log[file] = true
 
-        unless overwrite_all or force
+        unless overwrite_all || force
           if skip_all
             response_log[file] = false
           elsif File.exist? file
@@ -82,12 +81,18 @@ module Rigit::Commands
       end
 
       def prompt_user_to_overwrite(file)
-        say "File !txtgrn!#{file}!txtrst! already exists."
-        tty_prompt.expand "  Overwrite?" do |menu|
+        say "File g`#{file}` already exists."
+        tty_prompt.expand '  Overwrite?' do |menu|
           menu.choice key: 'y', name: 'overwrite',     value: true
           menu.choice key: 'n', name: 'skip',          value: false
-          menu.choice key: 'a', name: 'overwrite all'  do @overwrite_all = true; true end
-          menu.choice key: 's', name: 'skip all'       do @skip_all = true; false end
+          menu.choice key: 'a', name: 'overwrite all'  do
+            @overwrite_all = true
+            true
+          end
+          menu.choice key: 's', name: 'skip all' do
+            @skip_all = true
+            false
+          end
         end
       end
 
@@ -135,16 +140,16 @@ module Rigit::Commands
       end
 
       def verify_target_dir
-        return if Dir.empty?(target_dir) or force
+        return if Dir.empty?(target_dir) || force
 
         dirstring = target_dir == '.' ? 'Current directory' : "Directory '#{target_dir}'"
-        options = { "Abort" => :abort, "Continue here" => :continue, "Continue in a sub directory" => :create }
+        options = { 'Abort' => :abort, 'Continue here' => :continue, 'Continue in a sub directory' => :create }
         response = tty_prompt.select "#{dirstring} is not empty.", options, symbols: { marker: '>' }
-        
+
         case response
         when :abort
-          raise Rigit::Exit, "Goodbye"
-        
+          raise Rigit::Exit, 'Goodbye'
+
         when :create
           create_subdir
           verify_target_dir
@@ -152,12 +157,11 @@ module Rigit::Commands
       end
 
       def create_subdir
-        folder = tty_prompt.ask "Sub directory to create:", default: 'app'
+        folder = tty_prompt.ask 'Sub directory to create:', default: 'app'
         @target_dir = "#{target_dir}/#{folder}"
         Dir.mkdir target_dir unless Dir.exist? target_dir
         say "Creating in #{target_dir}"
       end
-
     end
   end
 end
