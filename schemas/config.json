@@ -1,0 +1,155 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "settings",
+    "description": "Settings of the current template",
+    "properties": {
+        "intro": {
+            "title": "intro",
+            "description": "A message displayed before scaffolding of the current template",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "Welcome to my blue b`rig`"
+            ]
+        },
+        "outro": {
+            "title": "outro",
+            "description": "A message displayed after scaffolding of the current template",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+                "Installation completed successfully"
+            ]
+        },
+        "before": {
+            "title": "before",
+            "description": "Commands executed before scaffolding of the current template",
+            "type": "object",
+            "patternProperties": {
+                ".": {
+                    "description": "A command executed before scaffolding of the current template",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "touch .env"
+                    ]
+                }
+            },
+            "additionalProperties": false
+        },
+        "after": {
+            "title": "after",
+            "description": "Commands executed after scaffolding of the current template",
+            "type": "object",
+            "patternProperties": {
+                ".": {
+                    "description": "A command executed after scaffolding of the current template",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "bundle install"
+                    ]
+                }
+            },
+            "additionalProperties": false
+        },
+        "force": {
+            "title": "force",
+            "description": "Whether continue scaffolding the current template even when directory is not empty",
+            "type": "boolean",
+            "default": false
+        },
+        "binaries": {
+            "title": "binaries",
+            "description": "Copied binaries of the current template",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "description": "A copied binary of the current template",
+                "type": "string",
+                "minLength": 1,
+                "examples": [
+                    "*.png"
+                ]
+            }
+        },
+        "params": {
+            "title": "params",
+            "description": "Parameters of the current template",
+            "type": "object",
+            "patternProperties": {
+                ".": {
+                    "description": "A parameter of the current template",
+                    "type": "object",
+                    "properties": {
+                        "prompt": {
+                            "title": "prompt",
+                            "description": "A prompt of the current parameter",
+                            "type": "string",
+                            "pattern": "[:?]$",
+                            "examples": [
+                                "Name your project:"
+                            ]
+                        },
+                        "type": {
+                            "title": "type",
+                            "description": "A type of the current parameter",
+                            "type": "string",
+                            "enum": [
+                                "yesno",
+                                "text",
+                                "select",
+                                "ruby"
+                            ]
+                        },
+                        "default": {
+                            "title": "default",
+                            "description": "A default of the current parameter",
+                            "type": "string",
+                            "examples": [
+                                "yes",
+                                "no"
+                            ]
+                        },
+                        "list": {
+                            "title": "list",
+                            "description": "Valid values of the current parameter",
+                            "type": "array",
+                            "minItems": 1,
+                            "uniqueItems": true,
+                            "items": {
+                                "description": "A valid value of the current parameter",
+                                "type": "string",
+                                "examples": [
+                                    "irb"
+                                ]
+                            }
+                        },
+                        "condition": {
+                            "title": "condition",
+                            "description": "A condition of the current parameter",
+                            "type": "string",
+                            "pattern": "^[^=]+=[^=]*$",
+                            "examples": [
+                                "console=yes"
+                            ]
+                        },
+                        "code": {
+                            "title": "code",
+                            "description": "A Ruby code of the current parameter",
+                            "type": "string",
+                            "minLength": 1,
+                            "examples": [
+                                "input[:name].upcase"
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}
