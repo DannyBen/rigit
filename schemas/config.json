@@ -147,6 +147,9 @@
                     },
                     "dependencies": {
                         "list": {
+                            "required": [
+                                "type"
+                            ],
                             "properties": {
                                 "type": {
                                     "const": "select"
@@ -154,6 +157,9 @@
                             }
                         },
                         "code": {
+                            "required": [
+                                "type"
+                            ],
                             "properties": {
                                 "type": {
                                     "const": "ruby"
