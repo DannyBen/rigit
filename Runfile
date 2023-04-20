@@ -12,3 +12,26 @@ action :changelog do
   # append older changelog (prior to switching to git-changelog)
   system "cat .changelog.old.md >> CHANGELOG.md"
 end
+
+help   'Test the JSON schema'
+action :schema do
+  files = Dir['examples/**/config.yml'] + Dir['spec/rigs/**/config.yml']
+  blacklist = %w[spec/rigs/broken/config.yml]
+  files.each do |file|
+    next if blacklist.include? file
+    command = "check-jsonschema --schemafile schemas/config.json #{file}"
+    say "\n$ check-jsonschema bb`#{file}`"
+    success = system command
+    exit 1 unless success
+  end
+
+  # Check failure
+  file = 'spec/rigs/broken/config.yml'
+  command = "check-jsonschema --schemafile schemas/config.json #{file}"
+  say "\n$ check-jsonschema bb`#{file}`"
+  say 'gb`Expecting failure`'
+  success = system command
+  exit 1 if success  
+
+  say 'gb`All Pass`'
+end

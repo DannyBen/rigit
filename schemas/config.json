@@ -87,7 +87,6 @@
                             "title": "prompt",
                             "description": "A prompt of the current parameter",
                             "type": "string",
-                            "pattern": "[:?]$",
                             "examples": [
                                 "Name your project:"
                             ]
