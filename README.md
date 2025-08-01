@@ -1,12 +1,6 @@
 Rigit
 ==================================================
 
-[![Gem Version](https://badge.fury.io/rb/rigit.svg)](https://badge.fury.io/rb/rigit)
-[![Build Status](https://github.com/DannyBen/apicake/workflows/Test/badge.svg)](https://github.com/DannyBen/apicake/actions?query=workflow%3ATest)
-[![Maintainability](https://api.codeclimate.com/v1/badges/d13abbe6f7601be78cf5/maintainability)](https://codeclimate.com/github/DannyBen/rigit/maintainability)
-
----
-
 Build project templates easily, and without the need to write code.
 
 ![Rigit](rigit-header.png)
