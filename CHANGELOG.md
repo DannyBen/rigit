@@ -1,12 +1,15 @@
-Change Log
+Changelog
 ========================================
 
 v0.3.0 - 2023-04-10
 ----------------------------------------
 
-- Update dependencies (Colsole + Runfile)
-- Drop support for Ruby 2.x
+- Update dependencies (Colsole + Runfile) [`e9124d1`](https://github.com/dannyben/rigit/commit/e9124d1)
+- Drop support for Ruby 2.x [`b1e80b8`](https://github.com/dannyben/rigit/commit/b1e80b8)
+- Compare [`v0.2.1..v0.3.0`](https://github.com/dannyben/rigit/compare/v0.2.1..v0.3.0)
 
+
+<!-- break v0.2.1 -->
 
 ## [v0.2.1](https://github.com/DannyBen/rigit/tree/v0.2.1) (2020-02-08)
 

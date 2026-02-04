@@ -6,13 +6,6 @@ summary "Runfile tasks for building the Rigit gem"
 import_gem 'runfile-tasks/gem'
 import_gem 'runfile-tasks/yard'
 
-help   "Generate changelog and append old changelog"
-action :changelog do
-  system "git changelog --save"
-  # append older changelog (prior to switching to git-changelog)
-  system "cat .changelog.old.md >> CHANGELOG.md"
-end
-
 help   'Test the JSON schema'
 action :schema do
   files = Dir['examples/**/config.yml'] + Dir['spec/rigs/**/config.yml']
