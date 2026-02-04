@@ -1,6 +1,8 @@
 Rigit
 ==================================================
 
+![repocard](repocard.svg)
+
 Build project templates easily, and without the need to write code.
 
 ![Rigit](rigit-header.png)
