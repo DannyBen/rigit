@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-performance
   - rubocop-rspec
 
@@ -8,7 +8,8 @@ inherit_gem:
     - rspec.yml
 
 AllCops:
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.2
+  SuggestExtensions: false
   Exclude:
     - dev/**/*
 
@@ -18,6 +19,6 @@ RSpec/InstanceVariable:
 RSpec/ExampleLength:
   Max: 9
 
-RSpec/FilePath:
+RSpec/SpecFilePathFormat:
   Exclude:
     - 'spec/rigit/commands/*.rb'

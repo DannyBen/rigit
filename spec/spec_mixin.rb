@@ -38,8 +38,8 @@ module SpecMixin
     Dir['**/*'].to_s
   end
 
-  def without_env(var, &block)
-    with_env var, nil, &block
+  def without_env(var, &)
+    with_env(var, nil, &)
   end
 
   def with_env(var, value = 'yes')
