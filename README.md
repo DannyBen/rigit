@@ -1,7 +1,7 @@
 Rigit
 ==================================================
 
-![repocard](repocard.svg)
+![repocard](https://repocard.dannyben.com/svg/rigit.svg)
 
 Build project templates easily, and without the need to write code.
 
